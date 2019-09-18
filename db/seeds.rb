@@ -16,6 +16,9 @@ password: Faker::Internet.password(min_length: 10, max_length: 20, mix_case: tru
 date_Of_Birth: Faker::Date.birthday(min_age: 18, max_age: 65),
 )
 end
+
+
+# J9bBLAW5lCpPE1VHMdkvXpEoNiMO0PGIcB_YbZDvfoW3siJIy_Ixqpt6vcsRtYUKlkDd1P5_gDP5LthY2ydKeG-WEiN2y7C1lwf2z6SA4gwIueD-v0cba0fc74lyXXYx
 #######################one####################################
 url1 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=1&limit=20"
 response1 = RestClient.get(url1, headers={Authorization: "Bearer #{Rails.application.credentials.yelp[:secret_access_key]"})

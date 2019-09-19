@@ -17,11 +17,11 @@ date_Of_Birth: Faker::Date.birthday(min_age: 18, max_age: 65),
 )
 end
 
-
-# J9bBLAW5lCpPE1VHMdkvXpEoNiMO0PGIcB_YbZDvfoW3siJIy_Ixqpt6vcsRtYUKlkDd1P5_gDP5LthY2ydKeG-WEiN2y7C1lwf2z6SA4gwIueD-v0cba0fc74lyXXYx
+#  byebug
+# 
 #######################one####################################
 url1 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=1&limit=20"
-response1 = RestClient.get(url1, headers={Authorization: "Bearer #{Rails.application.credentials.yelp[:secret_access_key]"})
+response1 = RestClient.get(url1, headers={Authorization: ""})
 json1 = JSON.parse(response1)
 # binding.pry
 i = 0 
@@ -42,7 +42,7 @@ end
 
 #######################two####################################
 url2 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=2&limit=20"
-response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials.yelp[:secret_access_key]"})
+response2 = RestClient.get(url2, headers={Authorization: ""})
 json2 = JSON.parse(response2)
 u = 0
 while u < 20 do 
@@ -61,7 +61,7 @@ u +=  1
 end 
 #######################three####################################
 url3 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=3&limit=20"
-response3 = RestClient.get(url3, headers={Authorization: "Bearer #{Rails.application.credentials.yelp[:secret_access_key]"})
+response3 = RestClient.get(url3, headers={Authorization: ""})
 json3 = JSON.parse(response3)
 a = 0
 while a < 20 do 
@@ -80,7 +80,7 @@ a +=  1
 end 
 #######################four####################################
 url4 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=4&limit=20"
-response4 = RestClient.get(url4, headers={Authorization: "Bearer #{Rails.application.credentials.yelp[:secret_access_key]"})
+response4 = RestClient.get(url4, headers={Authorization: ""})
 json4 = JSON.parse(response4)
 b = 0
 while b < 20 do 
@@ -99,7 +99,7 @@ b +=  1
 end 
 #######################five####################################
 url5 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=5&limit=20"
-response5 = RestClient.get(url5, headers={Authorization: "Bearer #{Rails.application.credentials.yelp[:secret_access_key]"})
+response5 = RestClient.get(url5, headers={Authorization: ""})
 json5 = JSON.parse(response3)
 c = 0
 while c < 20 do 
@@ -118,7 +118,7 @@ c +=  1
 end 
 #######################six####################################
 url6 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=6&limit=20"
-response6 = RestClient.get(url6, headers={Authorization: "Bearer #{Rails.application.credentials.yelp[:secret_access_key]"})
+response6 = RestClient.get(url6, headers={Authorization: ""})
 json6 = JSON.parse(response6)
 d = 0
 while d < 20 do 

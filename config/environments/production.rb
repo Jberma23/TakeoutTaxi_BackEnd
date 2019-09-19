@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  YELP_SECRET_ACCESS_KEY = ENV['yelp_secret_access_key']
+
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.require_master_key = true

@@ -15,38 +15,16 @@ ActiveRecord::Schema.define(version: 2019_09_18_202605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "customers", force: :cascade do |t|
-    t.string "firstName"
-    t.string "lastName"
-    t.string "email"
-    t.string "username"
-    t.string "password"
-    t.date "date_Of_Birth"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", force: :cascade do |t|
     t.integer "truck_id"
-    t.integer "customer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "owners", force: :cascade do |t|
-    t.string "firstName"
-    t.string "lastName"
-    t.string "email"
-    t.string "username"
-    t.string "password"
-    t.date "date_Of_Birth"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "trucks", force: :cascade do |t|
     t.string "name"
-    t.integer "owner_id"
+    t.integer "user_id"
     t.string "image_url"
     t.string "url"
     t.integer "review_count"
@@ -63,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_202605) do
     t.string "firstName"
     t.string "lastName"
     t.string "username"
-    t.boolean "owner"
+    t.integer "role"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

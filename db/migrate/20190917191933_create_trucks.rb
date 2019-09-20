@@ -2,7 +2,7 @@ class CreateTrucks < ActiveRecord::Migration[5.2]
   def change
     create_table :trucks do |t|
       t.string :name
-      t.integer :owner_id
+      t.integer :user_id
       t.string :image_url
       t.string :url
       t.integer :review_count

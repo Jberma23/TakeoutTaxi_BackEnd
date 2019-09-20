@@ -3,21 +3,22 @@ require 'json'
 require 'pry'
 require 'faker'
 Truck.delete_all
-Owner.delete_all
-60.times do 
-firstName = Faker::Name.unique.first_name,
-lastName = Faker::Name.unique.last_name,
-Owner.create(
-firstName: firstName,   
-lastName: lastName, 
-email: Faker::Internet.email(name: firstName),
-username: Faker::Internet.username(specifier: firstName),
-password: Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true),
-date_Of_Birth: Faker::Date.birthday(min_age: 18, max_age: 65),
+User.delete_all
+
+120.times do 
+
+User.create(
+firstName: Faker::Name.unique.first_name,   
+lastName: Faker::Name.unique.last_name, 
+username: Faker::Internet.username(specifier: @firstName),
+role: Faker::Number.within(range: 0..1),
+email: Faker::Internet.email(name: @firstName),
+password: Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true)
 )
 end
 
-#  byebug
+
+
 # 
 #######################one####################################
 url1 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=1&limit=20"
@@ -28,7 +29,7 @@ i = 0
 while i < 20 do 
 Truck.create(
 name: json1["businesses"][i]["name"],
-owner_id: Owner.all.sample.id, 
+user_id: User.all.select{|u| u.owner? == true}.sample.id, 
 image_url: json1["businesses"][i]["image_url"], 
 url: json1["businesses"][i]["url"], 
 review_count: json1["businesses"][i]["review_count"],
@@ -48,7 +49,7 @@ u = 0
 while u < 20 do 
 Truck.create(
 name: json2["businesses"][u]["name"],
-owner_id: Owner.all.sample.id, 
+user_id: User.all.select{|u| u.owner? == true}.sample.id, 
 image_url: json2["businesses"][u]["image_url"], 
 url: json2["businesses"][u]["url"], 
 review_count: json2["businesses"][u]["review_count"],
@@ -67,7 +68,7 @@ a = 0
 while a < 20 do 
 Truck.create(
 name: json3["businesses"][a]["name"],
-owner_id: Owner.all.sample.id, 
+user_id: User.all.select{|u| u.owner? == true}.sample.id, 
 image_url: json3["businesses"][a]["image_url"], 
 url: json3["businesses"][a]["url"], 
 review_count: json3["businesses"][a]["review_count"],
@@ -86,7 +87,7 @@ b = 0
 while b < 20 do 
 Truck.create(
 name: json4["businesses"][b]["name"],
-owner_id: Owner.all.sample.id, 
+user_id: User.all.select{|u| u.owner? == true}.sample.id, 
 image_url: json4["businesses"][b]["image_url"], 
 url: json4["businesses"][b]["url"], 
 review_count: json4["businesses"][b]["review_count"],
@@ -105,7 +106,7 @@ c = 0
 while c < 20 do 
 Truck.create(
 name: json5["businesses"][c]["name"],
-owner_id: Owner.all.sample.id, 
+user_id: User.all.select{|u| u.owner? == true}.sample.id, 
 image_url: json5["businesses"][c]["image_url"], 
 url: json5["businesses"][c]["url"], 
 review_count: json5["businesses"][c]["review_count"],
@@ -124,7 +125,7 @@ d = 0
 while d < 20 do 
 Truck.create(
 name: json6["businesses"][d]["name"],
-owner_id: Owner.all.sample.id, 
+user_id: User.all.select{|u| u.owner? == true}.sample.id, 
 image_url: json6["businesses"][d]["image_url"], 
 url: json6["businesses"][d]["url"], 
 review_count: json6["businesses"][d]["review_count"],

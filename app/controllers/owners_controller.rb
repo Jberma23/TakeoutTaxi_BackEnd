@@ -1,4 +1,5 @@
 class OwnersController < ApplicationController
+    before_action :authenticate_user!
     def index 
         owners = User.all.select{|u| u.owner? == true}
         render json: owners

@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+    before_action :authenticate_user!
   
     def index 
         customers = User.all.select{|u| u.customer? == true}

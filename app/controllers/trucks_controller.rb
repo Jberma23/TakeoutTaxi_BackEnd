@@ -12,7 +12,6 @@ class TrucksController < ApplicationController
         @truck = Truck.new
     end
     def create 
-        byebug
         truck = Truck.create(truck_params)
         render json: truck
     end
@@ -26,6 +25,6 @@ class TrucksController < ApplicationController
 
     private
     def truck_params
-        params.require(:truck).permit(:name, :user_id, :image_url, :url, :review_count, :rating, :latitude, :longitude, :price, :display_location )
+        params.require(:truck).permit(:name, :user_id, :image_url, :url, :review_count, :rating, :latitude, :longitude, :price, :address )
     end
 end

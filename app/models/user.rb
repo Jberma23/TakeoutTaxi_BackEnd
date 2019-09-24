@@ -9,8 +9,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :trucks
   has_many :orders
-  has_many :orders, through: :trucks
   has_many :trucks, through: :orders
+  has_many :orders, through: :trucks
+  has_many :reviews
+  has_many :trucks, through: :reviews
+  has_many :ratings 
+  has_many :trucks, through: :ratings
+  has_many :favorites
+  has_many :trucks, through: :favorites
+  
 
 
 

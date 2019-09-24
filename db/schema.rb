@@ -10,16 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_152648) do
+ActiveRecord::Schema.define(version: 2019_09_24_171242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "truck_id"
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer "truck_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "truck_id"
+    t.integer "rating"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "truck_id"
+    t.string "content"
   end
 
   create_table "trucks", force: :cascade do |t|

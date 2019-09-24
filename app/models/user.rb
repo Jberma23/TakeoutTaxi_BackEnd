@@ -1,11 +1,9 @@
 class User < ApplicationRecord
 
   enum role: [:customer, :owner, :admin]
-  # devise :database_authenticatable,
-  # :jwt_authenticatable,
-  # jwt_revocation_strategy: JWTBlacklist
-  # devise :database_authenticatable, :registerable,
-  #        :recoverable, :rememberable, :validatable
+  
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

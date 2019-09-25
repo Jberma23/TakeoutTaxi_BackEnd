@@ -1,19 +1,7 @@
 Rails.application.routes.draw do
-  get 'favorites/index'
-  get 'favorites/new'
-  get 'favorites/create'
-  get 'favorites/destory'
-  get 'favorites/update'
-  get 'reviews/index'
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/destory'
-  get 'reviews/update'
-  get 'ratings/index'
-  get 'ratings/new'
-  get 'ratings/create'
-  get 'ratings/destory'
-  get 'ratings/update'
+  resources :favorites
+  resources :reviews 
+  resources :ratings
   resources :trucks
   resources :orders
   resources :customers

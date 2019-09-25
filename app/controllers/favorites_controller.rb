@@ -3,13 +3,17 @@ class FavoritesController < ApplicationController
     favorites = Favorite.all
     render json: favorites
   end
-
+  def show
+    favorite = Favorite.find_by(parmas[:id])
+    render json: favorite
+  end
   def new
     favorite = Favorite.find_by(parmas[:id])
   end
 
   def create
     favorite = Favorite.create(favorite_params)
+    render json: favorite
   end
   
   def update

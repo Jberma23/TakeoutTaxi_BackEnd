@@ -3,7 +3,8 @@ class TrucksController < ApplicationController
     before_action :authenticate_user!, only: [:destroy]
     def index 
         trucks = Truck.all
-        render json: trucks
+        render json: trucks.to_json( 
+        include: [:favorite_trucks, :ratings, :truck_reviews])
     end
     def show 
         @truck = Truck.find_by(params[:id])

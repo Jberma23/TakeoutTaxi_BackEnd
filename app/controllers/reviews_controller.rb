@@ -3,6 +3,11 @@ class ReviewsController < ApplicationController
       reviews = Review.all
       render json: reviews
     end
+    def show
+      review = Review.find_by(parmas[:id])
+      render json: review
+    end
+
   
     def new
       review = Review.find_by(parmas[:id])

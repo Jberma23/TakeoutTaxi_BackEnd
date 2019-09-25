@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_171242) do
+ActiveRecord::Schema.define(version: 2019_09_25_132606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "truck_id"
+    t.integer "favoriter_id"
+    t.integer "favorited_id"
+    t.index ["favorited_id"], name: "index_favorites_on_favorited_id"
+    t.index ["favoriter_id"], name: "index_favorites_on_favoriter_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -28,15 +30,19 @@ ActiveRecord::Schema.define(version: 2019_09_24_171242) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "truck_id"
-    t.integer "rating"
+    t.integer "rater_id"
+    t.integer "rated_id"
+    t.integer "score"
+    t.index ["rated_id"], name: "index_ratings_on_rated_id"
+    t.index ["rater_id"], name: "index_ratings_on_rater_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "truck_id"
+    t.integer "reviewer_id"
+    t.integer "reviewed_id"
     t.string "content"
+    t.index ["reviewed_id"], name: "index_reviews_on_reviewed_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "trucks", force: :cascade do |t|

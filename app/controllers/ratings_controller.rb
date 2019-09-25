@@ -1,7 +1,12 @@
+require 'byebug'
 class RatingsController < ApplicationController
   def index
     ratings = Rating.all
     render json: ratings
+  end
+  def show
+    rating = Rating.find_by(parmas[:id])
+    render json: rating
   end
 
   def new
@@ -9,7 +14,8 @@ class RatingsController < ApplicationController
   end
 
   def create
-    rating = Rating.create(rating_params)
+    rating = Rating.create!(rating_params)
+    render json: rating
   end
   
   def update
@@ -23,7 +29,6 @@ class RatingsController < ApplicationController
 
   private 
   def rating_params
-    params.require(:rating).permit(:user_id, :truck_id, 
-      :rating)
+    params.require(:ratings).permit(:score, :user_id, :truck_id)
   end
 end

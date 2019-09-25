@@ -22,7 +22,7 @@ end
 # 
 #######################one####################################
 url1 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=1&limit=20"
-response1 = RestClient.get(url1, headers={Authorization: "Bearer #{ENV["yelp_secret_access_key"]}"})
+response1 = RestClient.get(url1, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 json1 = JSON.parse(response1)
 # binding.pry
 i = 0 
@@ -37,13 +37,13 @@ rating: json1["businesses"][i]["rating"],
 latitude: json1["businesses"][i]["coordinates"]["latitude"],
 longitude: json1["businesses"][i]["coordinates"]["longitude"], 
 price: json1["businesses"][i]["price"],
-display_location: json1["businesses"][i]["location"]["display_address"])
+address: json1["businesses"][i]["location"]["display_address"])
 i +=  1
 end 
 
 #######################two####################################
 url2 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=2&limit=20"
-response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["yelp_secret_access_key"]}"})
+response2 = RestClient.get(url2, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 json2 = JSON.parse(response2)
 u = 0
 while u < 20 do 
@@ -57,12 +57,12 @@ rating: json2["businesses"][u]["rating"],
 latitude: json2["businesses"][u]["coordinates"]["latitude"],
 longitude: json2["businesses"][u]["coordinates"]["longitude"], 
 price: json2["businesses"][u]["price"],
-display_location: json2["businesses"][u]["location"]["display_address"])
+address: json2["businesses"][u]["location"]["display_address"])
 u +=  1
 end 
 #######################three####################################
 url3 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=3&limit=20"
-response3 = RestClient.get(url3, headers={Authorization: "Bearer #{ENV["yelp_secret_access_key"]}"})
+response3 = RestClient.get(url3, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 json3 = JSON.parse(response3)
 a = 0
 while a < 20 do 
@@ -76,12 +76,12 @@ rating: json3["businesses"][a]["rating"],
 latitude: json3["businesses"][a]["coordinates"]["latitude"],
 longitude: json3["businesses"][a]["coordinates"]["longitude"], 
 price: json3["businesses"][a]["price"],
-display_location: json3["businesses"][a]["location"]["display_address"])
+address: json3["businesses"][a]["location"]["display_address"])
 a +=  1
 end 
 #######################four####################################
 url4 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=4&limit=20"
-response4 = RestClient.get(url4, headers={Authorization: "Bearer #{ENV["yelp_secret_access_key"]}"})
+response4 = RestClient.get(url4, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 json4 = JSON.parse(response4)
 b = 0
 while b < 20 do 
@@ -95,12 +95,12 @@ rating: json4["businesses"][b]["rating"],
 latitude: json4["businesses"][b]["coordinates"]["latitude"],
 longitude: json4["businesses"][b]["coordinates"]["longitude"], 
 price: json4["businesses"][b]["price"],
-display_location: json4["businesses"][b]["location"]["display_address"])
+address: json4["businesses"][b]["location"]["display_address"])
 b +=  1
 end 
 #######################five####################################
 url5 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=5&limit=20"
-response5 = RestClient.get(url5, headers={Authorization: "Bearer #{ENV["yelp_secret_access_key"]}"})
+response5 = RestClient.get(url5, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 json5 = JSON.parse(response3)
 c = 0
 while c < 20 do 
@@ -114,12 +114,12 @@ rating: json5["businesses"][c]["rating"],
 latitude: json5["businesses"][c]["coordinates"]["latitude"],
 longitude: json5["businesses"][c]["coordinates"]["longitude"], 
 price: json5["businesses"][c]["price"],
-display_location: json5["businesses"][c]["location"]["display_address"])
+address: json5["businesses"][c]["location"]["display_address"])
 c +=  1
 end 
 #######################six####################################
 url6 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=6&limit=20"
-response6 = RestClient.get(url6, headers={Authorization: "Bearer #{ENV["yelp_secret_access_key"]}"})
+response6 = RestClient.get(url6, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 json6 = JSON.parse(response6)
 d = 0
 while d < 20 do 
@@ -133,7 +133,7 @@ rating: json6["businesses"][d]["rating"],
 latitude: json6["businesses"][d]["coordinates"]["latitude"],
 longitude: json6["businesses"][d]["coordinates"]["longitude"], 
 price: json6["businesses"][d]["price"],
-display_location: json6["businesses"][d]["location"]["display_address"])
+address: json6["businesses"][d]["location"]["display_address"])
 d +=  1
 end 
 

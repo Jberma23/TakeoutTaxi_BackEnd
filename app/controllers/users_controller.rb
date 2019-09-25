@@ -4,7 +4,8 @@ class UsersController < ApplicationController
         users = User.all
         render json: users
         if user_signed_in?
-            render json: current_user
+            render json: current_user.to_json( 
+                include: [:ratings, :purchases, :reviews, :favorites ])
         end
     end
     def is_signed_in?
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     end
     def show 
         token = request.headers["Authentication"].split(" ")[1]
-        render json: User.find(decode(token)["user_id"]), status: :accepted
+        render json: User.find(decode(token)["user_id"]), status: :accepted,  include: [:ratings, :purchases, :reviews, :favorites ]
     end
     def new 
         @user = User.new

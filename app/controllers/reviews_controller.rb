@@ -1,7 +1,11 @@
+require 'byebug'
 class ReviewsController < ApplicationController
     def index
       reviews = Review.all
+      # render json: reviews
+      
       render json: reviews
+
     end
     def show
       review = Review.find_by(parmas[:id])
@@ -14,7 +18,8 @@ class ReviewsController < ApplicationController
     end
   
     def create
-      review = Review.create(review_params)
+      review = Review.create!(review_params)
+      render json: review
     end
     
     def update
@@ -27,8 +32,8 @@ class ReviewsController < ApplicationController
   
   
     private 
-    def rating_params
-      params.require(:review).permit(:user_id, :truck_id, 
+    def review_params
+      params.require(:review).permit(:reviewer_id, :reviewed_id, 
         :content)
     end
   end

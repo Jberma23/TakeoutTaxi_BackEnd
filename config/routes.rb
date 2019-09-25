@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # _sign_in_path_for :user, to: "users#show"
   root to: 'users#index'
   # post '/sign_in', to: "sessions#create"
-
+  get 'users/all', to: 'users#all'
   devise_for :users, :controllers => {registrations: 'registrations', sessions: 'user/sessions'}
   # devise_for :users
   # before_sign_in_path_for :user, to: "Devise::SessionsController#create"

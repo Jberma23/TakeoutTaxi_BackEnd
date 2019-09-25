@@ -4,7 +4,7 @@ class TrucksController < ApplicationController
     def index 
         trucks = Truck.all
         render json: trucks.to_json( 
-        include: [:favorite_trucks, :ratings, :truck_reviews])
+        include: [:favorites, :ratings, :reviews])
     end
     def show 
         @truck = Truck.find_by(params[:id])

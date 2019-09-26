@@ -21,13 +21,23 @@ class UsersController < ApplicationController
     def show 
         token = request.headers["Authentication"].split(" ")[1]
         render json: User.find(decode(token)["user_id"]), status: :accepted,  include: [:ratings, :orders, :reviews, :favorites ]
+   
     end
     def new 
         @user = User.new
     end
     def create 
-        user = User.create(user_params)
-        render json: user
+        @user = User.create(user_params)
+        # @user = User.find_by(username: params[:username])
+        # if @user && @user.authenticate(params[:password])
+        #   token = encode({user_id: @user.id})
+        #   render json: {
+        #     authenticated: true,
+        #     message: "You are logging in...",
+        #     user: @user,
+        #     token: token
+        #   }, status: :accepted
+        # render json: user
         
     end
     def update 

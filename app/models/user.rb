@@ -3,7 +3,7 @@ class User < ApplicationRecord
   enum role: [:customer, :owner, :admin]
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -21,7 +21,11 @@ class User < ApplicationRecord
 
 
 
-  
+ def self.valid_login?(email, password)
+       user = where(email: email).first
+       [user&.valid_password?(password), user]
+     end
+     
 
 
 

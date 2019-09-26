@@ -1,6 +1,5 @@
 require 'byebug'
 class ApplicationController < ActionController::API
-  
     before_action :configure_permitted_parameters, if: :devise_controller?
 
 
@@ -20,14 +19,24 @@ class ApplicationController < ActionController::API
     
     protected
     def after_sign_in_path_for(resource)
-     byebug
-      session[:domain_prefix] = current_user.domain_prefix
+     
+      session["http://localhost:3001"] = current_user
       user_path(resource)
     end
     def configure_permitted_parameters
-      added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
-      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-      devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :firstName, :lastName, :username, :role])
+      devise_parameter_sanitizer.permit(:sign_in) do |user_params|
+        user_params.permit(:username, :email)
+      end
     end
  
 end
+
+
+#   def configure_permitted_parameters
+#     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+#   end
+# end
+# added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
+# devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+# devise_parameter_sanitizer.permit :account_update, keys: added_attrs

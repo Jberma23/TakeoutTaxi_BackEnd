@@ -26,7 +26,7 @@ require 'byebug'
 
 # ######################one####################################
 # url1 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=1&limit=20"
-# response1 = RestClient.get(url1, headers={Authorization: "Bearer "})
+# response1 = RestClient.get(url1, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 # json1 = JSON.parse(response1)
 # # binding.pry
 # i = 0 
@@ -47,7 +47,7 @@ require 'byebug'
 
 # ######################two####################################
 # url2 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=2&limit=20"
-# response2 = RestClient.get(url2, headers={Authorization: "Bearer "})
+# response2 = RestClient.get(url2, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 # json2 = JSON.parse(response2)
 # u = 0
 
@@ -69,7 +69,7 @@ require 'byebug'
 # end 
 # #######################three####################################
 # url3 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=3&limit=20"
-# response3 = RestClient.get(url3, headers={Authorization: "Bearer "})
+# response3 = RestClient.get(url3, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 # json3 = JSON.parse(response3)
 # a = 0
 # while a < 20 do 
@@ -88,7 +88,7 @@ require 'byebug'
 # end 
 # # #######################four####################################
 # url4 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=4&limit=20"
-# response4 = RestClient.get(url4, headers={Authorization: "Bearer "})
+# response4 = RestClient.get(url4, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 # json4 = JSON.parse(response4)
 # b = 0
 # while b < 20 do 
@@ -107,7 +107,7 @@ require 'byebug'
 # end 
 # # #######################five####################################
 # url5 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=5&limit=20"
-# response5 = RestClient.get(url5, headers={Authorization: "Bearer "})
+# response5 = RestClient.get(url5, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 # json5 = JSON.parse(response3)
 # c = 0
 # while c < 20 do 
@@ -126,7 +126,7 @@ require 'byebug'
 # end 
 # # #######################six####################################
 # url6 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=6&limit=20"
-# response6 = RestClient.get(url6, headers={Authorization: "Bearer "})
+# response6 = RestClient.get(url6, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 # json6 = JSON.parse(response6)
 # d = 0
 # while d < 20 do 
@@ -187,7 +187,7 @@ require 'byebug'
 #     password: "April2597"
 #     )
 # url7 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=7&limit=20"
-# response1 = RestClient.get(url7, headers={Authorization: "Bearer "})
+# response1 = RestClient.get(url7, headers={Authorization: "Bearer FS__PGBjhDyeYv43xqj9NHp8cxgX5FONtl7cN67qiPOi8Gjj1hnBBASzivMhTvY5FmIoWtJDqQ7ybtDEhPcvZlU_lgaTjZIz0XuLPc1zH4XmTJwStGLxTDNr7GGDXXYx"})
 # json7 = JSON.parse(response1)
 # # binding.pry
 # z = 0 

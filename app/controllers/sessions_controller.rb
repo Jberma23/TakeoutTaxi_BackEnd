@@ -2,6 +2,7 @@ require 'byebug'
 
 class SessionsController < ApplicationController
   def create
+  
     success, user = User.valid_login?(params[:email], params[:password])
     if success
       token = encode({user_id: user.id})

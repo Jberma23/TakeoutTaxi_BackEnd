@@ -1,0 +1,13 @@
+class Location < ApplicationRecord
+
+
+
+
+
+
+
+
+
+
+  
+end

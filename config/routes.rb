@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'location/create'
+ resources :locations
   resources :favorites
   resources :reviews 
   resources :ratings

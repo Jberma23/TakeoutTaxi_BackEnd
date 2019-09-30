@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
 
   def index
     locations = Location.all 
-    render json:  Rails.application.credentials[:google][:api_key]
+    render json:  Rails.application.credentials[:google][:api_key].to_json()
   end
 
   def new

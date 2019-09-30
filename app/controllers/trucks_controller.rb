@@ -3,10 +3,9 @@ class TrucksController < ApplicationController
     before_action :authenticate_user!, only: [:destroy]
     def index 
         
-        byebug
         trucks = Truck.all
         render json: trucks.to_json( 
-        include: [:favorites, :ratings, :reviews]),
+        include: [:favorites, :ratings, :reviews])
     end
     def show 
         truck = Truck.find_by(params[:id])

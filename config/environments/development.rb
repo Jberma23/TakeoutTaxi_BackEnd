@@ -14,7 +14,7 @@ Rails.application.config.middleware.insert_before Warden::Manager, ActionDispatc
 
   # Show full error reports.
   config.action_controller.forgery_protection_origin_check = false
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local = true 
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

@@ -18,7 +18,7 @@ class TrucksController < ApplicationController
     def create 
 
         @truck = Truck.create!(truck_params)
-
+        
         @truck.image.attach(params[:truck][:image])
         render json: @truck
 

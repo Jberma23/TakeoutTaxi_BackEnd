@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   get 'location/create'
  resources :locations
   resources :favorites
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :owners
   resource :users
+  resources :direct_uploads
   devise_for :users, controllers: { sessions: 'users/sessions'}
   
   # , controllers: { sessions: 'sessions' }

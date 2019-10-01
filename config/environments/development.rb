@@ -13,6 +13,7 @@ Rails.application.config.middleware.insert_before Warden::Manager, ActionDispatc
   config.eager_load = false
 
   # Show full error reports.
+  config.action_controller.forgery_protection_origin_check = false
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
@@ -31,7 +32,7 @@ Rails.application.config.middleware.insert_before Warden::Manager, ActionDispatc
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -45,7 +46,7 @@ Rails.application.config.middleware.insert_before Warden::Manager, ActionDispatc
   config.active_record.migration_error = :page_load
 
   # Highlight code that triggered database queries in logs.
-  config.active_record.verbose_query_logs = true
+  config.active_record.verbose_query_logs = false
   
 
   # Raises error for missing translations

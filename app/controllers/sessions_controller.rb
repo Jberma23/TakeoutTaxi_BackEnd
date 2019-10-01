@@ -1,6 +1,7 @@
 require 'byebug'
 
 class SessionsController < ApplicationController
+  # after_filter :set_csrf_headers, only: [:create, :destroy]
   def create
   
     success, user = User.valid_login?(params[:email], params[:password])
@@ -19,5 +20,10 @@ class SessionsController < ApplicationController
 
   def destroy
   end
+
+  protected
+  # def set_csrf_headers
+  #   cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?  
+  # end
 end
 

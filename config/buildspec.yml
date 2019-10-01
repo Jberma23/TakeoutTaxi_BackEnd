@@ -1,0 +1,20 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - echo Starting postgresql...
+      - service postgresql restart
+      - echo Installing Bundler...
+      - gem install bundler
+      - bundle install --with test
+  pre_build:
+    commands:
+      - echo Preparing database to run tests...
+      - cp config/database.yml.example config/database.yml
+      - RAILS_ENV=test bundle exec rake db:setup
+      - RAILS_ENV=test bundle exec rake db:migrate
+  build:
+    commands:
+      - echo Running rspec tests...
+      - bundle exec rspec spec/

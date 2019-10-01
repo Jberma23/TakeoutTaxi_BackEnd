@@ -18,7 +18,6 @@ class TrucksController < ApplicationController
     def create 
 
         @truck = Truck.create!(truck_params)
-        
         @truck.image.attach(params[:truck][:image])
         render json: @truck
 
@@ -34,6 +33,6 @@ class TrucksController < ApplicationController
 
     private
     def truck_params
-        params.require(:truck).permit(:name, :user_id, :url, :review_count, :rating, :latitude, :longitude, :price, :address, image: [])
+        params.require(:truck).permit(:name, :user_id, :url, :review_count, :rating, :latitude, :longitude, :price, :address, image: [] )
     end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome_page/welcome'
 post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   get 'location/create'
  resources :locations
@@ -10,12 +11,17 @@ post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   resources :customers
   resources :owners
   resource :users
+  # resource :updates
   resources :direct_uploads
   devise_for :users, controllers: { sessions: 'users/sessions'}
-  
+  get 'welcome_page/welcome'
+  root 'welcome_page#welcome'
+get '/updates', to: 'updates#index'
+post '/updates', to: 'updates#create'
+post '/payments', to: 'payments#create'
   # , controllers: { sessions: 'sessions' }
   # _sign_in_path_for :user, to: "users#show"
-  root to: 'users#index'
+  # root to: 'users#index'
   # post '/sign_in', to: "sessions#create"
   # resources :sessions, only: [:create, :destroy]
   # devise_for :users

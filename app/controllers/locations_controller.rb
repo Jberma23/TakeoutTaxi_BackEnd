@@ -4,8 +4,9 @@ class LocationsController < ApplicationController
     location = Location.create!(location_params)
     render json: location
   end
-
+  
   def index
+    byebug
     locations = Location.all 
     render json:  Rails.application.credentials[:google][:api_key].to_json()
   end

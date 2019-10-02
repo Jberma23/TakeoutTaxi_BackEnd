@@ -77,7 +77,6 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
   <<: *default
   database: takeoutTaxi_production

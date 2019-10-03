@@ -1,7 +1,7 @@
 require 'byebug'
 class ReviewsController < ApplicationController
     def index
-      reviews = Review.all
+      reviews = Review.first(40)
       # render json: reviews
       
       render json: reviews

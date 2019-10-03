@@ -3,7 +3,7 @@ class TrucksController < ApplicationController
     before_action :authenticate_user!, only: [:destroy]
     def index 
         
-        trucks = Truck.all
+        trucks = Truck.first(40)
         render json: trucks.to_json( 
         include: [:favorites, :ratings, :reviews])
     end

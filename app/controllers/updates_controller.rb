@@ -1,7 +1,7 @@
 require 'byebug'
 class UpdatesController < ApplicationController
     def index 
-        updates = Update.all
+        updates = Update.first(40)
         render json: updates
     end
     # def show 

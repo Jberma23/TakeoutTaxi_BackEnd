@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         @user.save
     end
     def destroy 
-        User.find_by(params[:id]).delete()
+        User.find_by(id: params[:id]).delete
     end
 
     private

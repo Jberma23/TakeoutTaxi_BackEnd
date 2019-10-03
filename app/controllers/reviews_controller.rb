@@ -8,13 +8,13 @@ class ReviewsController < ApplicationController
 
     end
     def show
-      review = Review.find_by(parmas[:id])
+      review = Review.find_by(id: params[:id])
       render json: review
     end
 
   
     def new
-      review = Review.find_by(parmas[:id])
+      review = Review.find_by(id: params[:id])
     end
   
     def create
@@ -23,11 +23,11 @@ class ReviewsController < ApplicationController
     end
     
     def update
-      @review = Review.update(review_params)
-      @review.save
+      review = Review.update(review_params)
+      render json: review
     end
     def destory
-      Review.find_by(parmas[:id]).delete()
+      Review.find_by(id: params[:id]).delete
     end
   
   

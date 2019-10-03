@@ -5,12 +5,12 @@ class RatingsController < ApplicationController
     render json: ratings
   end
   def show
-    rating = Rating.find_by(parmas[:id])
+    rating = Rating.find_by(id: params[:id])
     render json: rating
   end
 
   def new
-    rating = Rating.find_by(parmas[:id])
+    rating = Rating.find_by(id: params[:id])
   end
 
   def create
@@ -23,7 +23,7 @@ class RatingsController < ApplicationController
     @rating.save
   end
   def destory
-    Rating.find_by(parmas[:id]).delete()
+    Rating.find_by(id: params[:id]).delete
   end
 
 

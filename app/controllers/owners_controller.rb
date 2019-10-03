@@ -5,7 +5,7 @@ class OwnersController < ApplicationController
         render json: owners
     end
     def show 
-        @owner = User.find_by(params[:id])
+        @owner = User.find_by(id: params[:id])
         render json: owner
     end
     def new 
@@ -19,7 +19,7 @@ class OwnersController < ApplicationController
        
     end
     def destroy 
-        Owner.find_by(params[:id]).delete()
+        Owner.find_by(id: params[:id]).delete
     end
 
     private

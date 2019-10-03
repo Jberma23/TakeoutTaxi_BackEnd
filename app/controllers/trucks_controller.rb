@@ -8,7 +8,7 @@ class TrucksController < ApplicationController
         include: [:favorites, :ratings, :reviews])
     end
     def show 
-        truck = Truck.find_by(params[:id])
+        truck = Truck.find_by(id: params[:id])
         render json: truck
     end
    
@@ -28,7 +28,7 @@ class TrucksController < ApplicationController
         render json: truck
     end
     def destroy 
-        Truck.find_by(params[:id]).delete()
+        Truck.find_by(id: params[:id]).delete
     end
 
     private

@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
         render json: orders
     end
     def show 
-        order = Order.find_by(params[:id])
+        order = Order.find_by(id: params[:id])
         render json: order
     end
     def new 
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
         @order.save
     end
     def destroy 
-        Order.find_by(params[:id]).delete()
+        Order.find_by(id: params[:id]).delete
     end
 
     private

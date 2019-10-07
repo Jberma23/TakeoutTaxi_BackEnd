@@ -5,9 +5,8 @@ phases:
       ruby: 2.6
     commands:
     - npm install --global yarn 
-    - npm install --global gatsby-cli
+    - npm install 
     - yarn 
-    - gatsby build
     - aws s3 sync public s3://elasticbeanstalk-us-east-1-412285691131 --delete
 
     

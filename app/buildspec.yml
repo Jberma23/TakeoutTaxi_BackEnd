@@ -8,7 +8,6 @@ phases:
       docker: 18
     commands:
       - echo Starting postgresql...
-      - service postgresql restart
       - echo Installing Bundler...
       - gem install bundler
       - bundle install --with test

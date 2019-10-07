@@ -2,6 +2,10 @@ version: 0.2
 
 phases:
   install:
+    install:
+    runtime-versions:
+      ruby: 2.6
+      docker: 18
     commands:
       - echo Starting postgresql...
       - service postgresql restart

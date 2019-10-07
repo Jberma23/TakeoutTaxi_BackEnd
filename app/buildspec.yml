@@ -2,8 +2,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-    ruby: 2.6
-    docker: 18
+      ruby: 2.6
     commands:
     - npm install --global yarn 
     - npm install --global gatsby-cli

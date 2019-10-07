@@ -24,7 +24,7 @@ class TrucksController < ApplicationController
     end
     def update 
         truck = Truck.find_by(id: params[:id])
-        truck.update!(truck_params)
+        truck.update(truck_params)
         render json: truck
     end
     def destroy 

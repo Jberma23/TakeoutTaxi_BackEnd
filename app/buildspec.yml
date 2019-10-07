@@ -1,4 +1,4 @@
-version: 0.1
+version: 0.2
 phases:
   install:
     runtime-versions:
@@ -9,3 +9,5 @@ phases:
     - yarn 
     - gatsby build
     - aws s3 sync public s3://elasticbeanstalk-us-east-1-412285691131 --delete
+
+    

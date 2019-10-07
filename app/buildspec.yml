@@ -7,6 +7,6 @@ phases:
     - npm install --global yarn 
     - npm install 
     - yarn 
-    - aws s3 sync public s3://elasticbeanstalk-us-east-1-412285691131 --delete
+
 
     

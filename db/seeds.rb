@@ -63,7 +63,7 @@ end
  
 ######################one####################################
 url1 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc"
-response1 = RestClient.get(url1, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+response1 = RestClient.get(url1, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
 
 json1 = JSON.parse(response1)
 json1["businesses"].each do |key,value|
@@ -83,7 +83,7 @@ end
 
 # ######################two####################################
 url2 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=Virginia"
-response2 = RestClient.get(url1, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+response2 = RestClient.get(url1, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
 
 json2 = JSON.parse(response2)
 json2["businesses"].each do |key,value|
@@ -101,7 +101,7 @@ address: key["location"]["display_address"])
 end 
 # #######################three####################################
 url3 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=Maryland"
-response3 = RestClient.get(url3, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+response3 = RestClient.get(url3, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
 
 json3 = JSON.parse(response3)
 json3["businesses"].each do |key,value|
@@ -121,7 +121,7 @@ end
 i = 0
 while i < 30 do 
 url = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=#{Faker::Address.state}"
-stuff = RestClient.get(url,headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+stuff = RestClient.get(url,headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
     JSON.parse(stuff)["businesses"].each do |key,value|
 Truck.create(
 name: key["name"],
@@ -159,7 +159,7 @@ end
 end    
 # #######################five####################################
 url5 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=5&limit=20"
-response5 = RestClient.get(url5, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+response5 = RestClient.get(url5, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
 json5 = JSON.parse(response3)
 c = 0
 while c < 20 do 
@@ -178,7 +178,7 @@ c +=  1
 end 
 # #######################six####################################
 url6 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=6&limit=20"
-response6 = RestClient.get(url6, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+response6 = RestClient.get(url6, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
 json6 = JSON.parse(response6)
 d = 0
 while d < 20 do 
@@ -238,7 +238,7 @@ end
 end  
 
 url7 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=7&limit=20"
-response1 = RestClient.get(url7, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+response1 = RestClient.get(url7, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
 json7 = JSON.parse(response1)
 # binding.pry
 z = 0 

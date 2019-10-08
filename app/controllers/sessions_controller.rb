@@ -1,4 +1,4 @@
-require 'byebug'
+
 
 class SessionsController < ApplicationController
   # after_filter :set_csrf_headers, only: [:create, :destroy]

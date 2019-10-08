@@ -1,4 +1,4 @@
-require 'byebug'
+
 class ReviewsController < ApplicationController
     def index
       reviews = Review.first(40)

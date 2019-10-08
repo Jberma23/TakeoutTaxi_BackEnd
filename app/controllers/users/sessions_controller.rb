@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'byebug'
+
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 

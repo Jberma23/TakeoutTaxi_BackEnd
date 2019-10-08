@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 require 'faker'
 require 'geocoder'
-require 'byebug'
+
 # Truck.delete_all
 # User.delete_all
 # Review.delete_all

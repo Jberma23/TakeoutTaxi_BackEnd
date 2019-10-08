@@ -1,4 +1,4 @@
-require 'byebug'
+
 require 'net/http'
 class PaymentsController < ApplicationController
     def create

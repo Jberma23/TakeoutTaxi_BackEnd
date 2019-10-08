@@ -170,8 +170,8 @@ end
 # url: json5["businesses"][c]["url"], 
 # review_count: json5["businesses"][c]["review_count"],
 # rating: json5["businesses"][c]["rating"],
-# latitude: key["coordinates"]["latitude"],
-# longitude: key["coordinates"]["longitude"], 
+# latitude: json5["coordinates"]["latitude"],
+# longitude: json5["coordinates"]["longitude"], 
 # price: json5["businesses"][c]["price"],
 # address: json5["businesses"][c]["location"]["display_address"])
 # c +=  1
@@ -189,8 +189,8 @@ end
 # url: json6["businesses"][d]["url"], 
 # review_count: json6["businesses"][d]["review_count"],
 # rating: json6["businesses"][d]["rating"],
-# latitude: key["coordinates"]["latitude"],
-# longitude: key["coordinates"]["longitude"], 
+# latitude: json6["coordinates"]["latitude"],
+# longitude: json6["coordinates"]["longitude"], 
 # price: json6["businesses"][d]["price"],
 # address: json6["businesses"][d]["location"]["display_address"])
 # d +=  1
@@ -237,22 +237,22 @@ end
         content: "#{User.all.sample.username} just reviewed #{Truck.all.sample.name}")
 end  
 
-url7 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=7&limit=20"
-response1 = RestClient.get(url7, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-json7 = JSON.parse(response1)
-# binding.pry
-z = 0 
-while z < 20 do 
-Truck.create(
-name: json1["businesses"][z]["name"],
-user_id: @JesseOwner.id, 
-image_url: json1["businesses"][z]["image_url"], 
-url: json1["businesses"][z]["url"], 
-review_count: json1["businesses"][z]["review_count"],
-rating: json1["businesses"][z]["rating"],
-latitude: json1["coordinates"]["latitude"],
-longitude: json1["coordinates"]["longitude"], 
-price: json1["businesses"][z]["price"],
-address: json1["businesses"][z]["location"]["display_address"])
-z +=  1
-end 
+# url7 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=7&limit=20"
+# response1 = RestClient.get(url7, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
+# json7 = JSON.parse(response1)
+# # binding.pry
+# z = 0 
+# while z < 20 do 
+# Truck.create(
+# name: json1["businesses"][z]["name"],
+# user_id: @JesseOwner.id, 
+# image_url: json1["businesses"][z]["image_url"], 
+# url: json1["businesses"][z]["url"], 
+# review_count: json1["businesses"][z]["review_count"],
+# rating: json1["businesses"][z]["rating"],
+# latitude: json1["coordinates"]["latitude"],
+# longitude: json1["coordinates"]["longitude"], 
+# price: json1["businesses"][z]["price"],
+# address: json1["businesses"][z]["location"]["display_address"])
+# z +=  1
+# end 

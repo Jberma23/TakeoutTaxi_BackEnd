@@ -1,29 +1,9 @@
-version: 0.2
-
-phases:
-  install:
-    install:
-    runtime-versions:
-      ruby: 2.6
-      docker: 18
-    commands:
-      - echo Starting postgresql...
-      - echo Installing Bundler...
-      - bundle install 
-  pre_build:
-    commands:
-      - echo Preparing database to run tests...
-      - cp config/database.yml.example config/database.yml
-      - RAILS_ENV=test bundle exec rake db:setup
-      - RAILS_ENV=test bundle exec rake db:migrate
-    artifacts:
-      files:
-        - '**/*'
-    name: myname-$(date +%Y-%m-%d) 
-  build:
-    commands:
-      - echo Running rspec tests...
-      - bundle exec rspec spec/
-
- 
- 
+ phases:
+   install:
+     install:
+     runtime-versions:
+       ruby: 2.6
+       docker: 18
+     commands:
+       - echo Starting postgresql...
+       - service postgresql restart

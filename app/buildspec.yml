@@ -9,8 +9,7 @@ phases:
     commands:
       - echo Starting postgresql...
       - echo Installing Bundler...
-      - gem install bundler
-      - bundle install --with test
+      - bundle install 
   pre_build:
     commands:
       - echo Preparing database to run tests...

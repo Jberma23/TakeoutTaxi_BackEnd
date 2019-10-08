@@ -1,6 +1,5 @@
  phases:
    install:
-     install:
      runtime-versions:
        ruby: 2.6
        docker: 18

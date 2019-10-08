@@ -12,7 +12,7 @@ gem 'geocoder'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-gem 'git'
+
 gem 'knock'
 gem 'square.rb'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

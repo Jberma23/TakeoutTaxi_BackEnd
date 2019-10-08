@@ -1,9 +1,9 @@
 # Base image
 FROM ruby:2.4.2
-
+ENV RUBY_MAJOR 2.5
+ENV RUBY_VERSION 2.5.3
 # Setup environment variables that will be available to the instance
 ENV APP_HOME /produciton
-
 # Installation of dependencies
 RUN apt-get update -qq \
   && apt-get install -y \
@@ -30,8 +30,9 @@ WORKDIR $APP_HOME
 # Add our Gemfile
 # and install gems
 
-ADD Gemfile* $APP_HOME/
-RUN bundle install
+COPY Gemfile Gemfile.lock ./
+ENV BUNDLER_VERSION 2.0.2
+RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 # Copy over our application code
 ADD . $APP_HOME

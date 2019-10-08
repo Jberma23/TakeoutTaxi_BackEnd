@@ -10,26 +10,26 @@ require 'geocoder'
 # Rating.delete_all
 # Favorite.delete_all
 # Update.delete_all
-100.times do 
-longmin1 = -76.815637;
-longmax1 = -77.216386;
-latmin1 = 38.771353;
-latmax1 = 39.00;
-Location.create(
-longitude: (longmin1 + (rand * (longmax1 - longmin1))),
-latitude: (latmin1 + (rand * (latmax1 - latmin1)))
-)
-end
-40.times do 
-    longmin2 = -76.972600;
-    longmax2 = 77.216386;
-    latmin2 = 39.070865;
-    latmax2 = 38.725156;
-    Location.create(
-    longitude: (longmin2 + (rand * (longmax2 - longmin2))),
-    latitude:  (latmin2 + (rand * (latmax2 - latmin2)))
-    )
-    end
+# 100.times do 
+# longmin1 = -76.815637;
+# longmax1 = -77.216386;
+# latmin1 = 38.771353;
+# latmax1 = 39.00;
+# Location.create(
+# longitude: (longmin1 + (rand * (longmax1 - longmin1))),
+# latitude: (latmin1 + (rand * (latmax1 - latmin1)))
+# )
+# end
+# 40.times do 
+#     longmin2 = -76.972600;
+#     longmax2 = 77.216386;
+#     latmin2 = 39.070865;
+#     latmax2 = 38.725156;
+#     Location.create(
+#     longitude: (longmin2 + (rand * (longmax2 - longmin2))),
+#     latitude:  (latmin2 + (rand * (latmax2 - latmin2)))
+#     )
+#     end
 
 
 

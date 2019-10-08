@@ -4,18 +4,18 @@ require 'pry'
 require 'faker'
 require 'geocoder'
 
-Truck.delete_all
-User.delete_all
-Review.delete_all
-Rating.delete_all
-Favorite.delete_all
-Update.delete_all
+# Truck.delete_all
+# User.delete_all
+# Review.delete_all
+# Rating.delete_all
+# Favorite.delete_all
+# Update.delete_all
 100.times do 
 longmin1 = -76.815637;
 longmax1 = -77.216386;
 latmin1 = 38.771353;
 latmax1 = 39.00;
-Location.create!(
+Location.create(
 longitude: (longmin1 + (rand * (longmax1 - longmin1))),
 latitude: (latmin1 + (rand * (latmax1 - latmin1)))
 )
@@ -25,7 +25,7 @@ end
     longmax2 = 77.216386;
     latmin2 = 39.070865;
     latmax2 = 38.725156;
-    Location.create!(
+    Location.create(
     longitude: (longmin2 + (rand * (longmax2 - longmin2))),
     latitude:  (latmin2 + (rand * (latmax2 - latmin2)))
     )
@@ -44,7 +44,7 @@ email: Faker::Internet.email(name: @firstName),
 password: Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true)
 )
 end
-@JesseCustomer = User.create!(
+@JesseCustomer = User.create(
     firstName: "Jesse",   
     lastName: "Berman", 
     username: "Jberma23",
@@ -52,7 +52,7 @@ end
     email: "Jesse.ben.berman@gmail.com",
     password: "April2597"
     )
-@JesseOwner = User.create!(
+@JesseOwner = User.create(
     firstName: "Jesse",   
     lastName: "Berman", 
     username: "Jberma23",
@@ -140,18 +140,18 @@ end
 
 
 10.times do 
-    Favorite.create!(
+    Favorite.create(
         favoriter_id: @JesseCustomer.id,
         favorited_id: Truck.all.sample.id)
-    Rating.create!(
+    Rating.create(
         rater_id: @JesseCustomer.id,
         rated_id: Truck.all.sample.id,
         score: Faker::Number.within(range: 0..6)
     )
-    Order.create!(
+    Order.create(
         user_id: @JesseCustomer.id,
         truck_id: Truck.all.sample.id)
-    Review.create!(
+    Review.create(
         reviewer_id: @JesseCustomer.id,
         reviewed_id: Truck.all.sample.id,
         content: Faker::Lorem.sentence, 
@@ -197,43 +197,43 @@ d +=  1
 end 
 
 40.times do 
-Favorite.create!(
+Favorite.create(
     favoriter_id: User.all.sample.id,
     favorited_id: Truck.all.sample.id)
 end    
 
 40.times do 
-    Rating.create!(
+    Rating.create(
         rater_id: User.all.sample.id,
         rated_id: Truck.all.sample.id,
         score: Faker::Number.within(range: 0..6))
 end    
 40.times do 
-    Order.create!(
+    Order.create(
         user_id: User.all.sample.id,
         truck_id: Truck.all.sample.id)
 end   
 40.times do 
-    Review.create!(
+    Review.create(
         reviewer_id: User.all.sample.id,
         reviewed_id: Truck.all.sample.id,
         content: Faker::Lorem.sentence,
         username: User.all.sample.username)
 end  
 10.times do 
-    Update.create!(
+    Update.create(
         content: "#{User.all.sample.username} just favored #{Truck.all.sample.name}")
 end  
 10.times do 
-    Update.create!(
+    Update.create(
         content: "#{Truck.all.sample.name} just updated it's location")
 end  
 10.times do 
-    Update.create!(
+    Update.create(
         content: "#{User.all.sample.username} just rated #{Truck.all.sample.name}")
 end  
 10.times do 
-    Update.create!(
+    Update.create(
         content: "#{User.all.sample.username} just reviewed #{Truck.all.sample.name}")
 end  
 

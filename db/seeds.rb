@@ -26,8 +26,8 @@ Update.delete_all
 #     latmin2 = 39.070865;
 #     latmax2 = 38.725156;
 #     Location.create(
-#     longitude: (longmin2 + (rand * (longmax2 - longmin2))),
-#     latitude:  (latmin2 + (rand * (latmax2 - latmin2)))
+#     longitude: (-76.972600 + (rand * (77.216386 + 76.972600)))
+#     latitude:  (39.070865 + (rand * (38.725156 - 39.070865)))
 #     )
 #     end
 

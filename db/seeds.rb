@@ -250,8 +250,8 @@ image_url: json1["businesses"][z]["image_url"],
 url: json1["businesses"][z]["url"], 
 review_count: json1["businesses"][z]["review_count"],
 rating: json1["businesses"][z]["rating"],
-latitude: key["coordinates"]["latitude"],
-longitude: key["coordinates"]["longitude"], 
+latitude: json1["coordinates"]["latitude"],
+longitude: json1["coordinates"]["longitude"], 
 price: json1["businesses"][z]["price"],
 address: json1["businesses"][z]["location"]["display_address"])
 z +=  1

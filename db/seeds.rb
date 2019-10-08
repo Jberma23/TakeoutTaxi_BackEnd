@@ -158,43 +158,43 @@ end
         username: Truck.all.sample.id)
 end    
 # #######################five####################################
-url5 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=5&limit=20"
-response5 = RestClient.get(url5, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-json5 = JSON.parse(response3)
-c = 0
-while c < 20 do 
-Truck.create(
-name: json5["businesses"][c]["name"],
-user_id: User.all.select{|u| u.owner? == true}.sample.id, 
-image_url: json5["businesses"][c]["image_url"], 
-url: json5["businesses"][c]["url"], 
-review_count: json5["businesses"][c]["review_count"],
-rating: json5["businesses"][c]["rating"],
-latitude: key["coordinates"]["latitude"],
-longitude: key["coordinates"]["longitude"], 
-price: json5["businesses"][c]["price"],
-address: json5["businesses"][c]["location"]["display_address"])
-c +=  1
-end 
-# #######################six####################################
-url6 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=6&limit=20"
-response6 = RestClient.get(url6, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-json6 = JSON.parse(response6)
-d = 0
-while d < 20 do 
-Truck.create(
-name: json6["businesses"][d]["name"],
-user_id: User.all.select{|u| u.owner? == true}.sample.id, 
-image_url: json6["businesses"][d]["image_url"], 
-url: json6["businesses"][d]["url"], 
-review_count: json6["businesses"][d]["review_count"],
-rating: json6["businesses"][d]["rating"],
-latitude: key["coordinates"]["latitude"],
-longitude: key["coordinates"]["longitude"], 
-price: json6["businesses"][d]["price"],
-address: json6["businesses"][d]["location"]["display_address"])
-d +=  1
-end 
+# url5 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=5&limit=20"
+# response5 = RestClient.get(url5, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
+# json5 = JSON.parse(response3)
+# c = 0
+# while c < 20 do 
+# Truck.create(
+# name: json5["businesses"][c]["name"],
+# user_id: User.all.select{|u| u.owner? == true}.sample.id, 
+# image_url: json5["businesses"][c]["image_url"], 
+# url: json5["businesses"][c]["url"], 
+# review_count: json5["businesses"][c]["review_count"],
+# rating: json5["businesses"][c]["rating"],
+# latitude: key["coordinates"]["latitude"],
+# longitude: key["coordinates"]["longitude"], 
+# price: json5["businesses"][c]["price"],
+# address: json5["businesses"][c]["location"]["display_address"])
+# c +=  1
+# end 
+# # #######################six####################################
+# url6 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=6&limit=20"
+# response6 = RestClient.get(url6, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
+# json6 = JSON.parse(response6)
+# d = 0
+# while d < 20 do 
+# Truck.create(
+# name: json6["businesses"][d]["name"],
+# user_id: User.all.select{|u| u.owner? == true}.sample.id, 
+# image_url: json6["businesses"][d]["image_url"], 
+# url: json6["businesses"][d]["url"], 
+# review_count: json6["businesses"][d]["review_count"],
+# rating: json6["businesses"][d]["rating"],
+# latitude: key["coordinates"]["latitude"],
+# longitude: key["coordinates"]["longitude"], 
+# price: json6["businesses"][d]["price"],
+# address: json6["businesses"][d]["location"]["display_address"])
+# d +=  1
+# end 
 
 40.times do 
 Favorite.create(

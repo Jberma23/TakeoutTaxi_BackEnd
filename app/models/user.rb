@@ -14,7 +14,7 @@ class User < ApplicationRecord
  has_many :trucks, through: :orders 
  has_many :reviews, :foreign_key => "reviewer_id"
  has_many :favorites, :foreign_key => "favoriter_id"
-
+ has_many :locations
   
 
 

@@ -6,6 +6,7 @@ class Truck < ApplicationRecord
     has_many :favorites, class_name: "Favorite", :foreign_key => "favorited_id"
     has_many :orders, class_name: "Order", :foreign_key => "purchased_id"
     has_many_attached :image
+    has_many :locations
 
    
     def featured_image_url

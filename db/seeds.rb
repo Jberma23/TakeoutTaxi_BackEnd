@@ -5,12 +5,19 @@ require 'faker'
 require 'geocoder'
 require 'byebug'
 Truck.delete_all
+Truck.connection.execute('ALTER SEQUENCE trucks_id_seq RESTART WITH 1')
 User.delete_all
+User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 Review.delete_all
+Review.connection.execute('ALTER SEQUENCE reviews_id_seq RESTART WITH 1')
 Rating.delete_all
+Rating.connection.execute('ALTER SEQUENCE ratings_id_seq RESTART WITH 1')
 Favorite.delete_all
+Favorite.connection.execute('ALTER SEQUENCE favorites_id_seq RESTART WITH 1')
 Update.delete_all
+Update.connection.execute('ALTER SEQUENCE updates_id_seq RESTART WITH 1')
 Order.delete_all
+Order.connection.execute('ALTER SEQUENCE orders_id_seq RESTART WITH 1')
 # 100.times do 
 # longmin1 = -76.815637;
 # longmax1 = -77.216386;

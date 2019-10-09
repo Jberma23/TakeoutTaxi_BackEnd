@@ -1,7 +1,7 @@
 
 class UpdatesController < ApplicationController
     def index 
-        updates = Update.first(40)
+        updates = Update.all
         render json: updates
     end
     # def show 

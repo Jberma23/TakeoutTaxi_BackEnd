@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 require 'faker'
 require 'geocoder'
-require 'byebug'
+
 Truck.delete_all
 Truck.connection.execute('ALTER SEQUENCE trucks_id_seq RESTART WITH 1')
 User.delete_all
@@ -41,7 +41,7 @@ Order.connection.execute('ALTER SEQUENCE orders_id_seq RESTART WITH 1')
 
 
 
-20.times do 
+40.times do 
 
 User.create(
 firstName: Faker::Name.unique.first_name,   
@@ -80,7 +80,7 @@ num = 0
 50.times do 
     state = STATES.sample
     url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
     
     json2 = JSON.parse(response2)
     if state == "Washingtondc" 
@@ -100,7 +100,8 @@ puts "#{state} number #{number}"
 end
 else 
 url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"}) 
+# Rails.application.credentials[:yelp][:api_key]
 json2 = JSON.parse(response2)
 (0...json2["businesses"].length).each do |number|
 Truck.create(
@@ -132,7 +133,7 @@ end
 
 
 10.times do 
-    @JesseCustomer = User.find_by(id: 21)
+    # @JesseCustomer = User.find_by(id: 21)
     Favorite.create(
         favoriter_id: @JesseCustomer.id,
         favorited_id: Truck.all.sample.id)

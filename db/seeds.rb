@@ -3,13 +3,14 @@ require 'json'
 require 'pry'
 require 'faker'
 require 'geocoder'
-
+require 'byebug'
 Truck.delete_all
 User.delete_all
 Review.delete_all
 Rating.delete_all
 Favorite.delete_all
 Update.delete_all
+Order.delete_all
 # 100.times do 
 # longmin1 = -76.815637;
 # longmax1 = -77.216386;
@@ -61,85 +62,70 @@ end
     password: "April2597"
     )
  
-######################one####################################
-url1 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc"
-response1 = RestClient.get(url1, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
 
-json1 = JSON.parse(response1)
-json1["businesses"].each do |key,value|
+STATES = ["WestVirginia", "Minnesota", "Tennessee", "Maryland", "Connecticut", "NorthDakota", "Oregon", "Oklahoma", "Montana", "Nebraska", "Missouri", "RhodeIsland", "NewYork", "Kansas", "NewJersey", "Washington", "California", "NewHampshire", "Georgia", "North Carolina", "Illinois", "Colorado", "Vermont", "Nevada", "Iowa", "Delaware", "SouthCarolina", "Mississippi", "Wyoming", "Louisiana", "Kentucky", "Alabama", "Arizona", "Texas", "Michigan", "Alaska", "Ohio", "Pennsylvania", "Hawaii", "Massachusetts", "Wisconsin", "Utah", "South Dakota", "Indiana", "New Mexico", "Virginia", "Florida", "Idaho", "Maine", "Arkansas", "Washingtondc"]
+
+
+
+
+######################two####################################
+num = 0
+50.times do 
+    state = STATES.sample
+    url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
+    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+    
+    json2 = JSON.parse(response2)
+    if state == "Washingtondc" 
+(0...json2["businesses"].length).each do |number|
 Truck.create(
-name: key["name"],
+name: json2["businesses"][number]["name"],
 user_id: @JesseOwner.id, 
-image_url: key["image_url"], 
-url: key["url"], 
-review_count: key["review_count"],
-rating: key["rating"],
-latitude: key["coordinates"]["latitude"],
-longitude: key["coordinates"]["longitude"], 
-price: key["price"],
-address: key["location"]["display_address"])
-end 
-
-
-# ######################two####################################
-url2 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=Virginia"
-response2 = RestClient.get(url1, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-
+image_url: json2["businesses"][number]["image_url"], 
+url: json2["businesses"][number]["url"], 
+review_count: json2["businesses"][number]["review_count"],
+rating: json2["businesses"][number]["rating"],
+latitude: json2["businesses"][number]["coordinates"]["latitude"],
+longitude: json2["businesses"][number]["coordinates"]["longitude"], 
+price: json2["businesses"][number]["price"],
+address: json2["businesses"][number]["location"]["display_address"])
+puts "#{state} number #{number}"
+end
+else 
+url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
+response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
 json2 = JSON.parse(response2)
-json2["businesses"].each do |key,value|
+(0...json2["businesses"].length).each do |number|
 Truck.create(
-name: key["name"],
+name: json2["businesses"][number]["name"],
 user_id: User.all.sample.id, 
-image_url: key["image_url"], 
-url: key["url"], 
-review_count: key["review_count"],
-rating: key["rating"],
-latitude: key["coordinates"]["latitude"],
-longitude: key["coordinates"]["longitude"], 
-price: key["price"],
-address: key["location"]["display_address"])
-end 
-# #######################three####################################
-url3 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=Maryland"
-response3 = RestClient.get(url3, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
+image_url: json2["businesses"][number]["image_url"], 
+url: json2["businesses"][number]["url"], 
+review_count: json2["businesses"][number]["review_count"],
+rating: json2["businesses"][number]["rating"],
+latitude: json2["businesses"][number]["coordinates"]["latitude"],
+longitude: json2["businesses"][number]["coordinates"]["longitude"], 
+price: json2["businesses"][number]["price"],
+address: json2["businesses"][number]["location"]["display_address"])
+puts "#{state} number #{number}"
 
-json3 = JSON.parse(response3)
-json3["businesses"].each do |key,value|
-Truck.create(
-name: key["name"],
-user_id: User.all.sample.id, 
-image_url: key["image_url"], 
-url: key["url"], 
-review_count: key["review_count"],
-rating: key["rating"],
-latitude: key["coordinates"]["latitude"],
-longitude: key["coordinates"]["longitude"], 
-price: key["price"],
-address: key["location"]["display_address"])
 end
-# # #######################four####################################
-i = 0
-while i < 30 do 
-url = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=#{Faker::Address.state}"
-stuff = RestClient.get(url,headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-    JSON.parse(stuff)["businesses"].each do |key,value|
-Truck.create(
-name: key["name"],
-user_id: User.all.sample.id, 
-image_url: key["image_url"], 
-url: key["url"], 
-review_count: key["review_count"],
-rating: key["rating"],
-latitude: key["coordinates"]["latitude"],
-longitude: key["coordinates"]["longitude"], 
-price: key["price"],
-address: key["location"]["display_address"])
 end
-i += 1
 end
+
+
+
+
+
+
+
+
+
+
 
 
 10.times do 
+    @JesseCustomer = User.find_by(id: 21)
     Favorite.create(
         favoriter_id: @JesseCustomer.id,
         favorited_id: Truck.all.sample.id)
@@ -157,44 +143,7 @@ end
         content: Faker::Lorem.sentence, 
         username: Truck.all.sample.id)
 end    
-# #######################five####################################
-# url5 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=5&limit=20"
-# response5 = RestClient.get(url5, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-# json5 = JSON.parse(response3)
-# c = 0
-# while c < 20 do 
-# Truck.create(
-# name: json5["businesses"][c]["name"],
-# user_id: User.all.select{|u| u.owner? == true}.sample.id, 
-# image_url: json5["businesses"][c]["image_url"], 
-# url: json5["businesses"][c]["url"], 
-# review_count: json5["businesses"][c]["review_count"],
-# rating: json5["businesses"][c]["rating"],
-# latitude: json5["coordinates"]["latitude"],
-# longitude: json5["coordinates"]["longitude"], 
-# price: json5["businesses"][c]["price"],
-# address: json5["businesses"][c]["location"]["display_address"])
-# c +=  1
-# end 
-# # #######################six####################################
-# url6 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=6&limit=20"
-# response6 = RestClient.get(url6, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-# json6 = JSON.parse(response6)
-# d = 0
-# while d < 20 do 
-# Truck.create(
-# name: json6["businesses"][d]["name"],
-# user_id: User.all.select{|u| u.owner? == true}.sample.id, 
-# image_url: json6["businesses"][d]["image_url"], 
-# url: json6["businesses"][d]["url"], 
-# review_count: json6["businesses"][d]["review_count"],
-# rating: json6["businesses"][d]["rating"],
-# latitude: json6["coordinates"]["latitude"],
-# longitude: json6["coordinates"]["longitude"], 
-# price: json6["businesses"][d]["price"],
-# address: json6["businesses"][d]["location"]["display_address"])
-# d +=  1
-# end 
+
 
 40.times do 
 Favorite.create(
@@ -237,22 +186,4 @@ end
         content: "#{User.all.sample.username} just reviewed #{Truck.all.sample.name}")
 end  
 
-# url7 = "https://api.yelp.com/v3/businesses/search?term=foodtruck&location=washingtondc&&page=7&limit=20"
-# response1 = RestClient.get(url7, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-# json7 = JSON.parse(response1)
-# # binding.pry
-# z = 0 
-# while z < 20 do 
-# Truck.create(
-# name: json1["businesses"][z]["name"],
-# user_id: @JesseOwner.id, 
-# image_url: json1["businesses"][z]["image_url"], 
-# url: json1["businesses"][z]["url"], 
-# review_count: json1["businesses"][z]["review_count"],
-# rating: json1["businesses"][z]["rating"],
-# latitude: json1["coordinates"]["latitude"],
-# longitude: json1["coordinates"]["longitude"], 
-# price: json1["businesses"][z]["price"],
-# address: json1["businesses"][z]["location"]["display_address"])
-# z +=  1
-# end 
+

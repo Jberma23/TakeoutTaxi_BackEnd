@@ -4,20 +4,20 @@ require 'pry'
 require 'faker'
 require 'geocoder'
 
-Truck.delete_all
 Truck.connection.execute('ALTER SEQUENCE trucks_id_seq RESTART WITH 1')
-User.delete_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
-Review.delete_all
 Review.connection.execute('ALTER SEQUENCE reviews_id_seq RESTART WITH 1')
-Rating.delete_all
 Rating.connection.execute('ALTER SEQUENCE ratings_id_seq RESTART WITH 1')
-Favorite.delete_all
 Favorite.connection.execute('ALTER SEQUENCE favorites_id_seq RESTART WITH 1')
-Update.delete_all
 Update.connection.execute('ALTER SEQUENCE updates_id_seq RESTART WITH 1')
-Order.delete_all
 Order.connection.execute('ALTER SEQUENCE orders_id_seq RESTART WITH 1')
+Truck.delete_all
+User.delete_all
+Review.delete_all
+Rating.delete_all
+Favorite.delete_all
+Update.delete_all
+Order.delete_all
 # 100.times do 
 # longmin1 = -76.815637;
 # longmax1 = -77.216386;
@@ -74,18 +74,18 @@ STATES = ["WestVirginia", "Minnesota", "Tennessee", "Maryland", "Connecticut", "
 
 
 
-
+TRUCKS = []
 ######################two####################################
 num = 0
 50.times do 
     state = STATES.sample
     url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
-    
+    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+    # Rails.application.credentials[:yelp][:api_key]
     json2 = JSON.parse(response2)
     if state == "Washingtondc" 
 (0...json2["businesses"].length).each do |number|
-Truck.create(
+truck = Truck.create(
 name: json2["businesses"][number]["name"],
 user_id: @JesseOwner.id, 
 image_url: json2["businesses"][number]["image_url"], 
@@ -96,11 +96,11 @@ latitude: json2["businesses"][number]["coordinates"]["latitude"],
 longitude: json2["businesses"][number]["coordinates"]["longitude"], 
 price: json2["businesses"][number]["price"],
 address: json2["businesses"][number]["location"]["display_address"])
-puts "#{state} number #{number}"
+TRUCKS << truck
 end
 else 
 url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"}) 
+response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"}) 
 # Rails.application.credentials[:yelp][:api_key]
 json2 = JSON.parse(response2)
 (0...json2["businesses"].length).each do |number|
@@ -115,13 +115,16 @@ latitude: json2["businesses"][number]["coordinates"]["latitude"],
 longitude: json2["businesses"][number]["coordinates"]["longitude"], 
 price: json2["businesses"][number]["price"],
 address: json2["businesses"][number]["location"]["display_address"])
-puts "#{state} number #{number}"
+
 
 end
 end
 end
-
-
+array = []
+TRUCKS.map do |t|
+    
+@JesseOwner.trucks.build({truck => t})
+end
 
 
 

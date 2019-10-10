@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_033138) do
+ActiveRecord::Schema.define(version: 2019_10_09_235055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2019_10_02_033138) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "truck_id"
-    t.integer "user_id"
+    t.integer "seller_id"
+    t.integer "purchaser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_033138) do
 
   create_table "trucks", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.integer "owner_id"
     t.string "image_url"
     t.string "url"
     t.integer "review_count"

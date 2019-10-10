@@ -41,7 +41,7 @@ Order.delete_all
 
 
 
-40.times do 
+60.times do 
 
 User.create(
 firstName: Faker::Name.unique.first_name,   
@@ -60,7 +60,7 @@ end
     email: "Jesse.ben.berman@gmail.com",
     password: "April2597"
     )
-@JesseOwner = User.create(
+@JESSEOWNER = User.create(
     firstName: "Jesse",   
     lastName: "Berman", 
     username: "Jberma23",
@@ -74,39 +74,41 @@ STATES = ["WestVirginia", "Minnesota", "Tennessee", "Maryland", "Connecticut", "
 
 
 
-TRUCKS = []
+
 ######################two####################################
 num = 0
 50.times do 
     state = STATES.sample
     url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
+    # ENV["YELP_API_KEY"]
     # Rails.application.credentials[:yelp][:api_key]
     json2 = JSON.parse(response2)
-    if state == "Washingtondc" 
-(0...json2["businesses"].length).each do |number|
-truck = Truck.create(
-name: json2["businesses"][number]["name"],
-user_id: @JesseOwner.id, 
-image_url: json2["businesses"][number]["image_url"], 
-url: json2["businesses"][number]["url"], 
-review_count: json2["businesses"][number]["review_count"],
-rating: json2["businesses"][number]["rating"],
-latitude: json2["businesses"][number]["coordinates"]["latitude"],
-longitude: json2["businesses"][number]["coordinates"]["longitude"], 
-price: json2["businesses"][number]["price"],
-address: json2["businesses"][number]["location"]["display_address"])
-TRUCKS << truck
-end
-else 
-url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"}) 
-# Rails.application.credentials[:yelp][:api_key]
-json2 = JSON.parse(response2)
+#     if state == "Washingtondc" 
+#         debugger
+# (0...json2["businesses"].length).each do |number|
+# truck = Truck.create(
+# name: json2["businesses"][number]["name"],
+# owner_id: User.all[-1].id, 
+# image_url: json2["businesses"][number]["image_url"], 
+# url: json2["businesses"][number]["url"], 
+# review_count: json2["businesses"][number]["review_count"],
+# rating: json2["businesses"][number]["rating"],
+# latitude: json2["businesses"][number]["coordinates"]["latitude"],
+# longitude: json2["businesses"][number]["coordinates"]["longitude"], 
+# price: json2["businesses"][number]["price"],
+# address: json2["businesses"][number]["location"]["display_address"])
+# end
+# else 
+# url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
+# response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"}) 
+# # ENV["YELP_API_KEY"]
+# # Rails.application.credentials[:yelp][:api_key]
+# json2 = JSON.parse(response2)
 (0...json2["businesses"].length).each do |number|
 Truck.create(
 name: json2["businesses"][number]["name"],
-user_id: User.all.sample.id, 
+owner_id: User.all.sample.id, 
 image_url: json2["businesses"][number]["image_url"], 
 url: json2["businesses"][number]["url"], 
 review_count: json2["businesses"][number]["review_count"],
@@ -120,11 +122,7 @@ address: json2["businesses"][number]["location"]["display_address"])
 end
 end
 end
-array = []
-TRUCKS.map do |t|
-    
-@JesseOwner.trucks.build({truck => t})
-end
+
 
 
 
@@ -146,8 +144,8 @@ end
         score: Faker::Number.within(range: 0..6)
     )
     Order.create(
-        user_id: @JesseCustomer.id,
-        truck_id: Truck.all.sample.id)
+        purchaser_id: @JesseCustomer.id,
+        seller_id: Truck.all.sample.id)
     Review.create(
         reviewer_id: @JesseCustomer.id,
         reviewed_id: Truck.all.sample.id,
@@ -170,8 +168,8 @@ end
 end    
 40.times do 
     Order.create(
-        user_id: User.all.sample.id,
-        truck_id: Truck.all.sample.id)
+        purchaser_id: User.all.sample.id,
+        seller_id: Truck.all.sample.id)
 end   
 40.times do 
     Review.create(

@@ -2,8 +2,7 @@ class User < ApplicationRecord
 
   enum role: [:customer, :owner, :admin]
   
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackables
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

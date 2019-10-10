@@ -85,7 +85,6 @@ num = 0
     # Rails.application.credentials[:yelp][:api_key]
     json2 = JSON.parse(response2)
     if state == "Washingtondc" 
-        debugger
 (0...json2["businesses"].length).each do |number|
 truck = Truck.create(
 name: json2["businesses"][number]["name"],

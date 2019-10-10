@@ -4,13 +4,13 @@ require 'pry'
 require 'faker'
 require 'geocoder'
 
-Truck.connection.execute('ALTER SEQUENCE trucks_id_seq RESTART WITH 1')
-User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
-Review.connection.execute('ALTER SEQUENCE reviews_id_seq RESTART WITH 1')
-Rating.connection.execute('ALTER SEQUENCE ratings_id_seq RESTART WITH 1')
-Favorite.connection.execute('ALTER SEQUENCE favorites_id_seq RESTART WITH 1')
-Update.connection.execute('ALTER SEQUENCE updates_id_seq RESTART WITH 1')
-Order.connection.execute('ALTER SEQUENCE orders_id_seq RESTART WITH 1')
+# Truck.connection.execute('ALTER SEQUENCE trucks_id_seq RESTART WITH 1')
+# User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
+# Review.connection.execute('ALTER SEQUENCE reviews_id_seq RESTART WITH 1')
+# Rating.connection.execute('ALTER SEQUENCE ratings_id_seq RESTART WITH 1')
+# Favorite.connection.execute('ALTER SEQUENCE favorites_id_seq RESTART WITH 1')
+# Update.connection.execute('ALTER SEQUENCE updates_id_seq RESTART WITH 1')
+# Order.connection.execute('ALTER SEQUENCE orders_id_seq RESTART WITH 1')
 Truck.delete_all
 User.delete_all
 Review.delete_all
@@ -121,7 +121,7 @@ address: json2["businesses"][number]["location"]["display_address"])
 
 end
 end
-end
+# end
 
 
 

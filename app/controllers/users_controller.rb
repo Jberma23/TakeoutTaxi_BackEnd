@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     end
     def create 
         @user = User.create(user_params)
+       
         # @user = User.find_by(username: params[:username])
         # if @user && @user.authenticate(params[:password])
         #   token = encode({user_id: @user.id})

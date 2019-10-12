@@ -1,4 +1,4 @@
-
+require 'byebug'
 class UpdatesController < ApplicationController
     def index 
         updates = Update.all
@@ -18,6 +18,6 @@ class UpdatesController < ApplicationController
 
     private
     def update_params
-        params.permit(:content)
+        params.permit(:content, :feed_item, :update)
     end
 end

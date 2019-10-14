@@ -32,11 +32,7 @@ module TakeoutTaxi
     config.to_prepare do
       DeviseController.respond_to :html, :json
     end
-    # config.action_dispatch.default_headers = {
-    #   'Access-Control-Allow-Origin' => 'http://localhost:3001.com',
-    #   'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(","),
-
-    # }
+   
     config.middleware.use ActionDispatch::Cookies
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

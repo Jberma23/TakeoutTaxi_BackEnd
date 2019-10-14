@@ -35,7 +35,7 @@ class Users::SessionsController < Devise::SessionsController
 
   protected
   def after_sign_in_path_for(resource)
-    session["http://localhost:3001"] = current_user
+    session["https://takeouttruckstop.herokuapp.com/"] = current_user
   end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params

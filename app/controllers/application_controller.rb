@@ -2,7 +2,9 @@
 class ApplicationController < ActionController::API
   include ::ActionController::Cookies
     before_action :configure_permitted_parameters, if: :devise_controller?
-    
+    protect_from_forgery
+    before_filter :cors_preflight_check
+    after_filter :cors_set_access_control_headers
 
     def secret_key
       'Richardm'
@@ -25,7 +27,22 @@ class ApplicationController < ActionController::API
     def decode(token)
       JWT.decode(token, secret_key, true, {algorithm: "HS512"})[0]
     end
-    
+    def cors_set_access_control_headers
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+      headers['Access-Control-Allow-Headers'] = %w{Origin Accept Content-Type X-Requested-With auth_token X-CSRF-Token}.join(',')
+      headers['Access-Control-Max-Age'] = "1728000"
+  end
+  
+  def cors_preflight_check
+    if request.method == "OPTIONS"
+      headers['Access-Control-Allow-Origin'] = 'http://localhost'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+      headers['Access-Control-Allow-Headers'] = %w{Origin Accept Content-Type X-Requested-With auth_token X-CSRF-Token}.join(',')
+      headers['Access-Control-Max-Age'] = '1728000'
+      render :text => '', :content_type => 'text/plain'
+    end
+  end
     protected
     # def after_sign_in_path_for(resource)
      

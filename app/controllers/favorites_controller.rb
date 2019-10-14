@@ -1,7 +1,13 @@
 class FavoritesController < ApplicationController
   def index
+    if current_user != nil && current_user.role == "customer"
+      favorites = current_user.favorites
+      render json: favories.to_json( 
+      include: [:favorites, :ratings, :reviews])
+      else
     favorites = Favorite.all
     render json: favorites
+      end
   end
   def show
     favorite = Favorite.find_by(params[:id])

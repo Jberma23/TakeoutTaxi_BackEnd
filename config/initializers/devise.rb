@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'a6912c5a6ce8d4aef56329984a1eb26b9397deeee5b429d0678d2b6870e2d879bc6a11e91776f3b75fe50fb6764b6f2f9c0c1fa620ad9bc40e722720a6840735'
+  # config.secret_key = '4e6fde6cbc2a63aaa91d368cfccf1d6287c12c2a8d43335367b34c02571a41447aeda9dbc3a62ba4e9b3e12f133611c0dc9d59342439ddbb4dc1b3f07aaa6951'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -20,9 +20,8 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
- 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'Devise::Mailer'
+  # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -41,8 +40,8 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  config.authentication_keys = [:email]
-  
+  # config.authentication_keys = [:email]
+
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
@@ -64,8 +63,8 @@ Devise.setup do |config|
   # It can be set to an array that will enable params authentication only for the
   # given strategies, for example, `config.params_authenticatable = [:database]` will
   # enable it only for database (email + password) authentication.
-  config.params_authenticatable = true
-  config.params_authenticatable = [:database]
+  # config.params_authenticatable = true
+
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:database]` will
@@ -115,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '6bfc6386c1f50065218f089c3c629e27fac6f768613edcf79c8eeb0f5bdfd8b14ba68bb5dcdafc465628c67cbb2e456c02f61a3930286040c4ba0acfefdf9d75'
+  # config.pepper = 'f387151d97da8e4861e22311581cf2e2876287aa7969bb48a7eb5e1780b08bcfd1b2d8e0020c41bd81c72776c3c92ab7e6ca506ddf8fa44b1fd69706039e6445'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -132,7 +131,7 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-  config.allow_unconfirmed_access_for = 2.days
+  # config.allow_unconfirmed_access_for = 2.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -145,15 +144,15 @@ Devise.setup do |config|
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
-  # # unconfirmed_email column, and copied to email column on successful confirmation.
-  # config.reconfirmable = true
+  # unconfirmed_email column, and copied to email column on successful confirmation.
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  config.confirmation_keys = [:email]
+  # config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 2.days
+  # config.remember_for = 2.weeks
 
   # Invalidates all the remember me tokens when the user signs out.
   config.expire_all_remember_me_on_sign_out = true
@@ -208,7 +207,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  config.reset_password_keys = [:email]
+  # config.reset_password_keys = [:email]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
@@ -233,8 +232,8 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = true
-  # config.authentication_keys = [ :login ]
+  # config.scoped_views = false
+
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
   # config.default_scope = :user
@@ -293,7 +292,7 @@ Devise.setup do |config|
   # end
 
   # ==> Configuration for :registerable
-  # config.navigational_formats = []
+
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true

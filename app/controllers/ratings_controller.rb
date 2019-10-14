@@ -1,8 +1,14 @@
 
 class RatingsController < ApplicationController
-  def index
+  def index 
+    if current_user != nil && current_user.role == "customer"
+    ratings = current_user.ratings
+    render json: ratings.to_json( 
+    include: [:favorites, :ratings, :reviews]) 
+  else
     ratings = Rating.all
     render json: ratings
+  end
   end
   def show
     rating = Rating.find_by(id: params[:id])

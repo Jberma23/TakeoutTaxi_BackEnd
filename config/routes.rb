@@ -13,12 +13,19 @@ post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   resource :users
   # resource :updates
   resources :direct_uploads
-  devise_for :users, controllers: { sessions: 'users/sessions'}
+  devise_for :users,
+    controllers: {
+    registrations:  "users/registrations",
+    confirmations:  "users/confirmations",
+    sessions:       "users/sessions",
+    passwords:      "users/passwords",
+  }, :path_names => {:sign_in => "login", :sign_out => "logout"}
   get 'welcome_page/welcome'
   root 'welcome_page#welcome'
 get '/updates', to: 'updates#index'
 post '/updates', to: 'updates#create'
 post '/payments', to: 'payments#create'
+get '/current_user', to: 'current_user#show'
   # , controllers: { sessions: 'sessions' }
   # _sign_in_path_for :user, to: "users#show"
   # root to: 'users#index'

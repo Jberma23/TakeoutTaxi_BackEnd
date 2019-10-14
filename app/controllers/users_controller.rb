@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show, :create, :new]
+    # before_action :authenticate_user!, except: [ :create, :new]
     def index 
         users = User.all
         render json: users
         if user_signed_in?
+            byebug
             render json: current_user.to_json( 
                 include: [:ratings, :orders, :reviews, :favorites ])
         end
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
     
     end
     def show 
+        byebug
         token = request.headers["Authentication"].split(" ")[1]
         render json: User.find(decode(token)["user_id"]), status: :accepted,  include: [:ratings, :orders, :reviews, :favorites ]
    

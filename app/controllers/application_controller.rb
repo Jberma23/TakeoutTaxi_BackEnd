@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::API
   include ::ActionController::Cookies
     before_action :configure_permitted_parameters, if: :devise_controller?
-    protect_from_forgery with: :exception
+
     after_action :cors_set_access_control_headers
 
   def cors_set_access_control_headers

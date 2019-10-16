@@ -27,7 +27,7 @@ module TakeoutTaxi
 
     # Dotenv::Railtie.load
 
-      HOSTNAME = ENV['HOSTNAME']
+      HOSTNAME = ENV['https://takeouttruckstop.herokuapp.com']
  
     config.to_prepare do
       DeviseController.respond_to :html, :json

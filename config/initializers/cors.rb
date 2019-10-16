@@ -7,7 +7,13 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://takeouttruckstop.herokuapp.com/' # your client's domain
+    origins %w[
+      https://takeouttruckstop.herokuapp.com
+      http://takeouttruckstop.herokuapp.com
+      https://takeouttruckstop.com
+      http://takeouttruckstop.com
+    ] # your client's domain
+    # Access-Control-Allow-Origin
     resource '*',
     headers: :any,
     methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true

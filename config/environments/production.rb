@@ -3,7 +3,7 @@ Rails.application.configure do
 
 
 
-    config.allowed_cors_origins = 'https://takeouttruckstop.herokuapp.com/'
+  config.allowed_cors_origins = 'https://takeouttruckstop.herokuapp.com'
  
   # Code is not reloaded between requests.
   config.cache_classes = true

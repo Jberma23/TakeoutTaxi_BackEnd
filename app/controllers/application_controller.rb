@@ -10,7 +10,6 @@ class ApplicationController < ActionController::API
     headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
     headers['Access-Control-Allow-Headers'] = '*'
     headers['Access-Control-Max-Age'] = '1728000'
-    headers['Vary'] = 'Origin'
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, credentials, Content-Type, Accept, Authorization'
   end
     def secret_key

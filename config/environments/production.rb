@@ -1,10 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-
-
-  config.allowed_cors_origins = 'https://takeouttruckstop.herokuapp.com'
- 
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.require_master_key = true
@@ -15,7 +11,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Ensures that a master key has been made available in either

@@ -46,7 +46,6 @@ class TrucksController < ApplicationController
     end
     def authenticate_user
         jwt = cookies['jwt']
-        byebug
         decode(jwt)
       end
 end

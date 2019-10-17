@@ -1,8 +1,6 @@
-require 'byebug'
-
 class TrucksController < ApplicationController
     # skip_before_action :verify_authenticity_token
-     before_action :authenticate_user, only: [:index]
+    #  before_action :authenticate_user
   
  
     def index
@@ -15,7 +13,6 @@ class TrucksController < ApplicationController
         render json: trucks.to_json( 
         include: [:favorites, :ratings, :reviews])
         else
-       
             trucks = Truck.all
             render json: trucks.to_json( 
             include: [:favorites, :ratings, :reviews])
@@ -48,7 +45,8 @@ class TrucksController < ApplicationController
         params.require(:truck).permit(:name, :owner_id, :url, :review_count, :rating, :latitude, :longitude, :price, :address, image_url: [] )
     end
     def authenticate_user
-        jwt = cookies.signed[:jwt]
+        jwt = cookies['jwt']
+        byebug
         decode(jwt)
       end
 end

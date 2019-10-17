@@ -1,4 +1,3 @@
-
 class LocationsController < ApplicationController
   def create
     location = Location.create!(location_params)

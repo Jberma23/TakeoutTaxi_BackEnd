@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'byebug'
 class Users::SessionsController < Devise::SessionsController
   
   before_action :configure_sign_in_params, only: [:create]
@@ -16,13 +15,8 @@ class Users::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     yield resource if block_given?
     created_jwt = encode({user_id: @user.id})
-    cookies.signed[:jwt] = {value:  created_jwt, httponly: true, expires: 1.hour.from_now}
-    render json: {authenticated: true, user: @user}
-  # else
-  #   render json: {
-  #     error: 'Username or password incorrect'
-  #   }, status: 404
-  # end
+    # cookies.signed[:jwt] = {value:  created_jwt, httponly: true, expires: 1.hour.from_now}
+    render json: {authenticated: true, user: @user, value:  created_jwt}
   end
 
   # DELETE /resource/sign_out
@@ -35,7 +29,7 @@ class Users::SessionsController < Devise::SessionsController
 
   protected
   def after_sign_in_path_for(resource)
-    session["https://takeouttruckstop.herokuapp.com/"] = current_user
+    session["http://localhost:3001"] = current_user
   end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params

@@ -1,4 +1,3 @@
-require 'byebug'
 class UpdatesController < ApplicationController
     def index 
         updates = Update.all

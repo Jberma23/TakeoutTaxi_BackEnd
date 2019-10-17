@@ -7,9 +7,10 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://takeouttruckstop.com' # your client's domain
+    origins 'http://localhost:3001' # your client's domain
     resource '*',
+   
     headers: :any,
-    methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+    methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: false
   end
 end

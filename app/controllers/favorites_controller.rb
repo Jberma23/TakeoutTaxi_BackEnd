@@ -1,9 +1,14 @@
 class FavoritesController < ApplicationController
+  # before_action :authenticate_user
   def index
+    jwt = request.headers[:token]
+    if jwt
+    id = decode(jwt)
+    current_user = User.find_by(id: id['user_id']) 
+    end
     if current_user != nil && current_user.role == "customer"
       favorites = current_user.favorites
-      render json: favories.to_json( 
-      include: [:favorites, :ratings, :reviews])
+      render json: favorites
       else
     favorites = Favorite.all
     render json: favorites
@@ -34,6 +39,11 @@ class FavoritesController < ApplicationController
 
 
   private 
+  def authenticate_user
+    jwt = request.headers[:token]
+    id = decode(jwt)
+    current_user = User.find_by(id: id['user_id']) 
+  end
   def favorite_params
     params.require(:favorite).permit(:favoriter_id, :favorited_id)
   end

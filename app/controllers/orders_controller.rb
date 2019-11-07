@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user
     def index 
         orders = Order.all
         render json: orders
@@ -23,6 +23,11 @@ class OrdersController < ApplicationController
     end
 
     private
+    def authenticate_user
+        jwt = request.headers[:token]
+        id = decode(jwt)
+        current_user = User.find_by(id: id['user_id']) 
+      end
     def order_params
         params.require(:order).permit(:truck_id, :customer_id)
     end

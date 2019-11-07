@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user
     def index
       reviews = Review.all
       # render json: reviews
@@ -31,6 +32,11 @@ class ReviewsController < ApplicationController
   
   
     private 
+    def authenticate_user
+      jwt = request.headers[:token]
+      id = decode(jwt)
+      current_user = User.find_by(id: id['user_id']) 
+    end
     def review_params
       params.require(:review).permit(:reviewer_id, :reviewed_id, 
         :content, :username)

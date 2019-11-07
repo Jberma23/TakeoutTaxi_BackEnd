@@ -3,9 +3,17 @@ class UsersController < ApplicationController
     def index 
         users = User.all
         render json: users
-        if user_signed_in?
+        jwt = request.headers[:token]
+        if jwt
+        id = decode(jwt)
+        current_user = User.find_by(id: id['user_id']) 
+        if current_user != nil
             byebug
-            render json: current_user.to_json( 
+            render json:  current_user.to_json( 
+                include: [:ratings, :orders, :reviews, :favorites ])
+            end
+        else 
+            render json:  User.all.to_json( 
                 include: [:ratings, :orders, :reviews, :favorites ])
         end
     end
@@ -20,10 +28,14 @@ class UsersController < ApplicationController
     
     end
     def show 
-        byebug
-        token = request.headers["Authentication"].split(" ")[1]
-        render json: User.find(decode(token)["user_id"]), status: :accepted,  include: [:ratings, :orders, :reviews, :favorites ]
-   
+        jwt = request.headers[:token]
+        if jwt
+        id = decode(jwt)
+        current_user = User.find_by(id: id['user_id']) 
+        render json: current_user.to_json(status: :accepted,  include: [:ratings, :orders, :reviews, :favorites ])
+        else 
+            render json: User.all.to_json(status: :accepted,  include: [:ratings, :orders, :reviews, :favorites ])
+        end
     end
     def new 
         @user = User.new

@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  before_action :authenticate_user
   def index 
     if current_user != nil && current_user.role == "customer"
     ratings = current_user.ratings
@@ -33,6 +34,12 @@ class RatingsController < ApplicationController
 
 
   private 
+  def authenticate_user
+    jwt = request.headers[:token]
+    id = decode(jwt)
+    current_user = User.find_by(id: id['user_id']) 
+    debugger
+  end
   def rating_params
     params.require(:rating).permit(:rater_id, :rated_id, :score)
   end

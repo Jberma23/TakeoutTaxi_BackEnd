@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  # before_action :authenticate_user
   def create
     location = Location.create!(location_params)
     render json: location
@@ -16,6 +17,11 @@ class LocationsController < ApplicationController
     render json: location
   end
   private 
+  def authenticate_user
+    jwt = request.headers[:token]
+    id = decode(jwt)
+    current_user = User.find_by(id: id['user_id']) 
+  end
   def location_params 
     params.require(:location).permit(:latitude, :longitude)
   end

@@ -1,8 +1,11 @@
 class TrucksController < ApplicationController
-    # before_action :authenticate_user
- 
+    before_action :authenticate_user
+    
     
     def index
+        jwt = request.headers[:token]
+        id = decode(jwt)
+        current_user = User.find_by(id: id['user_id'])        
         if current_user != nil && current_user.role == "customer"
         trucks = Truck.all
         render json: trucks.to_json( 
@@ -46,6 +49,6 @@ class TrucksController < ApplicationController
     def authenticate_user
         jwt = request.headers[:token]
         id = decode(jwt)
-        current_user = User.find_by(id: id)
+        current_user = User.find_by(id: id['user_id']) 
       end
 end

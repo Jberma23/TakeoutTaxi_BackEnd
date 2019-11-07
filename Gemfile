@@ -7,13 +7,12 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', '~> 5.2.3'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'geocoder'
-
 # gem 'fast_jsonapi'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-
+gem 'devise_token_auth'
 gem 'knock'
 gem 'square.rb'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -48,16 +47,16 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-   gem 'rack-cors', require: 'rack/cors'
+  #  gem 'rack-cors', require: 'rack/cors'
  
 end
 group :production do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-   gem 'rack-cors', require: 'rack/cors'
+  # gem 'listen', '>= 3.0.5', '< 3.2'
+  #  gem 'rack-cors', require: 'rack/cors'
  
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'spring'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 

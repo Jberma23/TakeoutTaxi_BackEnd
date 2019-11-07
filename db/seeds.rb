@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 require 'faker'
 require 'geocoder'
-
+require 'byebug'
 # Truck.connection.execute('ALTER SEQUENCE trucks_id_seq RESTART WITH 1')
 # User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 # Review.connection.execute('ALTER SEQUENCE reviews_id_seq RESTART WITH 1')
@@ -80,7 +80,7 @@ num = 0
 50.times do 
     state = STATES.sample
     url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"})
+    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
     # ENV["YELP_API_KEY"]
     # Rails.application.credentials[:yelp][:api_key]
     json2 = JSON.parse(response2)
@@ -100,7 +100,7 @@ address: json2["businesses"][number]["location"]["display_address"])
 end
 else 
 url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-response2 = RestClient.get(url2, headers={Authorization: "Bearer #{ENV["YELP_API_KEY"]}"}) 
+response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"}) 
 # ENV["YELP_API_KEY"]
 # Rails.application.credentials[:yelp][:api_key]
 json2 = JSON.parse(response2)

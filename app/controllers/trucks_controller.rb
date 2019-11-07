@@ -1,8 +1,7 @@
 class TrucksController < ApplicationController
-    # skip_before_action :verify_authenticity_token
-    #  before_action :authenticate_user
-  
+    # before_action :authenticate_user
  
+    
     def index
         if current_user != nil && current_user.role == "customer"
         trucks = Truck.all
@@ -45,8 +44,8 @@ class TrucksController < ApplicationController
         params.require(:truck).permit(:name, :owner_id, :url, :review_count, :rating, :latitude, :longitude, :price, :address, image_url: [] )
     end
     def authenticate_user
-        jwt = cookies['jwt']
-        byebug
-        decode(jwt)
+        jwt = request.headers[:token]
+        id = decode(jwt)
+        current_user = User.find_by(id: id)
       end
 end

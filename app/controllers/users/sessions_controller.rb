@@ -15,8 +15,7 @@ class Users::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     yield resource if block_given?
     created_jwt = encode({user_id: @user.id})
-    # cookies.signed[:jwt] = {value:  created_jwt, httponly: true, expires: 1.hour.from_now}
-    render json: {authenticated: true, user: @user, value:  created_jwt}
+    render json: {authenticated: true, user: @user, token: created_jwt}
   end
 
   # DELETE /resource/sign_out

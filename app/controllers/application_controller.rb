@@ -1,16 +1,8 @@
 class ApplicationController < ActionController::API
   include ::ActionController::Cookies
     before_action :configure_permitted_parameters, if: :devise_controller?
-    # before_action :authenticate_user
-    # after_action :cors_set_access_control_headers
+    # before_action :authenticate_user!
 
-  # def cors_set_access_control_headers
-  #   headers['Access-Control-Allow-Origin'] = 'https://takeouttruckstop.herokuapp.com/'
-  #   headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
-  #   headers['Access-Control-Allow-Headers'] = '*'
-  #   headers['Access-Control-Max-Age'] = '1728000'
-  #   headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, credentials, Content-Type, Accept, Authorization'
-  # end
     def secret_key
       'Richardm'
     end
@@ -19,9 +11,6 @@ class ApplicationController < ActionController::API
       jwt = cookies.signed[:jwt]
       decode(jwt)
     end
-    # def secret_key
-    #   'Richardm'
-    # end
   
     # #given some payload, I want to  return a token
     def encode(payload)
@@ -34,11 +23,11 @@ class ApplicationController < ActionController::API
     end
 
     protected
-    # def after_sign_in_path_for(resource)
+    def after_sign_in_path_for(resource)
      
-    #   session["http://localhost:3001"] = current_user
+      session["http://localhost:3001"] = current_user
      
-    # end
+    end
    
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :firstName, :lastName, :username, :role])

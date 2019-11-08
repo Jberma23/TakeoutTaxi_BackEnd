@@ -47,8 +47,13 @@ class TrucksController < ApplicationController
         params.require(:truck).permit(:name, :owner_id, :url, :review_count, :rating, :latitude, :longitude, :price, :address, image_url: [] )
     end
     def authenticate_user
+<<<<<<< HEAD
         jwt = request.headers[:token]
         id = decode(jwt)
         current_user = User.find_by(id: id['user_id']) 
+=======
+        jwt = cookies['jwt']
+        decode(jwt)
+>>>>>>> d8b7ae157b20c8a2cd93668ba34084b3e220f8eb
       end
 end

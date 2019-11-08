@@ -7,8 +7,7 @@ class UsersController < ApplicationController
         if jwt
         id = decode(jwt)
         current_user = User.find_by(id: id['user_id']) 
-        if current_user != nil
-            byebug
+        if current_user != nil   
             render json:  current_user.to_json( 
                 include: [:ratings, :orders, :reviews, :favorites ])
             end

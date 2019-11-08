@@ -38,6 +38,7 @@ module TakeoutTaxi
     #   'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(","),
 
     # }
+    config.i18n.fallbacks = [:en]
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     # Settings in config/environments/* take precedence over those specified here.

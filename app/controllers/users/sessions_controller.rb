@@ -15,6 +15,8 @@ class Users::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     yield resource if block_given?
     created_jwt = encode({user_id: @user.id})
+    
+    response.headers['Access-Control-Allow-Origin'] = '*'
     render json: {authenticated: true, user: UserSerializer.new(@user), token: created_jwt}
   end
 

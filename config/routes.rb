@@ -26,6 +26,7 @@ get '/updates', to: 'updates#index'
 post '/updates', to: 'updates#create'
 post '/payments', to: 'payments#create'
 get '/current_user', to: 'current_user#show'
+match '*all', to: proc { [204, {}, ['']]}, via: :options
   # , controllers: { sessions: 'sessions' }
   # _sign_in_path_for :user, to: "users#show"
   # root to: 'users#index'

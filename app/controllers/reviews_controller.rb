@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user
+  # before_action :authenticate_user
     def index
       reviews = Review.all
       # render json: reviews

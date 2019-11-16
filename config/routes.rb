@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  match '*all', to: proc { [204, {}, ['']]}, via: :options
   get 'welcome_page/welcome'
-post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
+  post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   get 'location/create'
- resources :locations
+  resources :locations
   resources :favorites
   resources :reviews 
   resources :ratings
@@ -22,11 +23,10 @@ post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   }, :path_names => {:sign_in => "login", :sign_out => "logout"}
   get 'welcome_page/welcome'
   root 'welcome_page#welcome'
-get '/updates', to: 'updates#index'
-post '/updates', to: 'updates#create'
-post '/payments', to: 'payments#create'
-get '/current_user', to: 'current_user#show'
-match '*all', to: proc { [204, {}, ['']]}, via: :options
+  get '/updates', to: 'updates#index'
+  post '/updates', to: 'updates#create'
+  post '/payments', to: 'payments#create'
+  get '/current_user', to: 'current_user#show'
   # , controllers: { sessions: 'sessions' }
   # _sign_in_path_for :user, to: "users#show"
   # root to: 'users#index'

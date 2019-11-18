@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  # before_action :authenticate_user
+  before_action :authenticate_user
   def create
     location = Location.create!(location_params)
     render json: location

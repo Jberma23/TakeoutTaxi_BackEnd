@@ -2,6 +2,7 @@ require_relative 'boot'
 require 'net/http'
 require 'uri'
 require "rails"
+require 'byebug'
 # require 'byebug'
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -50,10 +51,10 @@ module TakeoutTaxi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-
-    config.middleware.insert_before 0, Rack::Cors, debug: true, logger: (-> { Rails.logger }) do
-      allow do
-        origins 'https://takeouttruckstop.herokuapp.com' # your client's domain
+    # , debug: true, logger: (-> { Rails.logger }) do
+    config.middleware.insert_before 0, Rack::Cors do
+    allow do
+        origins 'http://localhost:3001' # your client's domain https://takeouttruckstop.herokuapp.com
         resource '*',
         headers: :any,
         methods: [:get, :post, :put, :patch, :delete, :options, :head], 

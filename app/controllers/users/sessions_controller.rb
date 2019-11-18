@@ -10,13 +10,16 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
+    if request[:user]["token"]
+      id = decode(request[:user]["token"])
+      @user = User.find_by(id: id['user_id'])
+    else 
     self.resource = warden.authenticate!(auth_options)
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
     yield resource if block_given?
+    end
     created_jwt = encode({user_id: @user.id})
-    
-    # response.headers['Access-Control-Allow-Origin'] = '*'
     render json: {authenticated: true, user: UserSerializer.new(@user), token: created_jwt}
   end
 

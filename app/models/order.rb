@@ -4,7 +4,7 @@ class Order < ApplicationRecord
     # attr_accessor :purchased_id
     belongs_to :user
     belongs_to :truck
-
+    has_and_belongs_to_many :items,:join_table => "order_items"
     # square = Square::Client.new(access_token: 'YOUR ACCESS TOKEN')
     
     # response = square.customers.create_customer(body: new_customer)

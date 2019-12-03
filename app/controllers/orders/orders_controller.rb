@@ -29,6 +29,6 @@ class OrdersController < ApplicationController
         current_user = User.find_by(id: id['user_id']) 
       end
     def order_params
-        params.require(:order).permit(:truck_id, :customer_id)
+        params.require(:order).permit(:seller_id, :purchaser_id)
     end
 end

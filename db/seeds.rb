@@ -195,19 +195,25 @@ require 'byebug'
 # end  
 
 
-Menu.create!(name: ,truck_id:)
-Menu.create!(name: ,truck_id:)
+# Menu.create!(name: Faker::Restaurant.type, truck_id: Truck.all.sample.id)
+# Menu.create!(name: Faker::Restaurant.type, truck_id: Truck.all.sample.id)
 
-Category.create!(name: ,truck_id:)
-Category.create!(name: ,truck_id:)
+# Category.create!(name: Faker::Restaurant.type, menu_id: Menu.all.sample.id)
+# Category.create!(name: Faker::Restaurant.type, menu_id: Menu.all.sample.id)
 
-Item.create!(name: ,truck_id:)
-Item.create!(name: ,truck_id:)
+# Item.create!(name: Faker::Food.dish, description: Faker::Food.description, ingredients: "#{Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient + Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient}", price: Faker::Number.between(from: 1, to: 15), category_id: Category.all.sample.id)
+# Item.create!(name: Faker::Food.dish, description: Faker::Food.description,ingredients: "#{Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient + Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient}", price: Faker::Number.between(from: 1, to: 15), category_id: Category.all.sample.id)
+# Item.create!(name: Faker::Food.dish, description: Faker::Food.description,ingredients: "#{Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient + Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient}", price: Faker::Number.between(from: 1, to: 15), category_id: Category.all.sample.id)
+# Item.create!(name: Faker::Food.dish, description: Faker::Food.description,ingredients: "#{Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient + Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient}", price: Faker::Number.between(from: 1, to: 15), category_id: Category.all.sample.id)
+# Item.create!(name: Faker::Food.dish, description: Faker::Food.description,ingredients: "#{Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient + Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient}", price: Faker::Number.between(from: 1, to: 15), category_id: Category.all.sample.id)
+# Item.create!(name: Faker::Food.dish, description: Faker::Food.description,ingredients: "#{Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient + Faker::Food.ingredient + ", " + Faker::Food.ingredient + ", " + Faker::Food.ingredient}", price: Faker::Number.between(from: 1, to: 15), category_id: Category.all.sample.id)
 
 
-Order.create!(seller_id: ,purchaser_id: , total: )
-Order.create!(seller_id: ,purchaser_id: , total: )
-
+Order.create!(seller_id: Truck.all.sample.id, purchaser_id: User.all.sample.id)
+Order.create!(seller_id: Truck.all.sample.id, purchaser_id: User.all.sample.id)
+Order.create!(seller_id: Truck.all.sample.id, purchaser_id: User.all.sample.id)
+Order.create!(seller_id: Truck.all.sample.id, purchaser_id: User.all.sample.id)
+Order.create!(seller_id: Truck.all.sample.id, purchaser_id: User.all.sample.id)
 # OrderItem.create!(order_id: , item_id: )
 # OrderItem.create!(order_id: , item_id: )
 

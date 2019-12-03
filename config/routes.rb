@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :orders
   resources :customers
   resources :owners
+  resources :menus
+  resources :categories
+  resources :items
   resource :users
+
   # resource :updates
   resources :direct_uploads
   devise_for :users,

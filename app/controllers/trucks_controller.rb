@@ -1,24 +1,24 @@
 class TrucksController < ApplicationController
-    before_action :authenticate_user
+    # before_action :authenticate_user
     
     
     def index
-        jwt = request.headers[:token]
-        id = decode(jwt)
-        current_user = User.find_by(id: id['user_id'])        
-        if current_user != nil && current_user.role == "customer"
-        trucks = Truck.all
-        render json: trucks.to_json( 
-        include: [:favorites, :ratings, :reviews])
-        elsif current_user != nil && current_user.role == "owner" 
-        trucks = current_user.trucks
-        render json: trucks.to_json( 
-        include: [:favorites, :ratings, :reviews])
-        else
+        # jwt = request.headers[:token]
+        # id = decode(jwt)
+        # current_user = User.find_by(id: id['user_id'])        
+        # if current_user != nil && current_user.role == "customer"
+        # trucks = Truck.all
+        # render json: trucks.to_json( 
+        # include: [:favorites, :ratings, :reviews])
+        # elsif current_user != nil && current_user.role == "owner" 
+        # trucks = current_user.trucks
+        # render json: trucks.to_json( 
+        # include: [:favorites, :ratings, :reviews])
+        # else
             trucks = Truck.all
             render json: trucks.to_json( 
             include: [:favorites, :ratings, :reviews])
-        end
+        # end
     end
     def show 
         truck = Truck.find_by(id: params[:id])

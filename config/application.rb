@@ -54,7 +54,8 @@ module TakeoutTaxi
     # , debug: true, logger: (-> { Rails.logger }) do
     config.middleware.insert_before 0, Rack::Cors do
     allow do
-        origins  "https://www.takeouttruckstop.com"
+        origins "http://localhost:3001"
+        #  "https://www.takeouttruckstop.com"
            # your client's domain https://takeouttruckstop.herokuapp.com
         resource '*',
         headers: :any,

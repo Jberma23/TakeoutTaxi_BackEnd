@@ -7,7 +7,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', '~> 5.2.3'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'geocoder'
-gem 'devise-jwt'
+# gem 'devise-jwt'
 # gem 'fast_jsonapi'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -22,7 +22,7 @@ gem 'square.rb'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-# gem 'jwt'
+gem 'jwt'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 

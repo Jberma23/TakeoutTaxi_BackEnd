@@ -2,6 +2,7 @@ require_relative 'boot'
 require 'net/http'
 require 'uri'
 require "rails"
+require "byebug"
 
 # require 'byebug'
 # Pick the frameworks you want:
@@ -40,8 +41,7 @@ module TakeoutTaxi
 
     # }
 
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

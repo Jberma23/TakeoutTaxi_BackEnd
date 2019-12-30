@@ -7,9 +7,12 @@ class ApplicationController < ActionController::API
       'Richardm'
     end
 
-    def authenticate_user
-      jwt = cookies.signed[:jwt]
-      decode(jwt)
+    def authenticate
+      jwt = request.headers[:token]
+      if jwt 
+      id = decode(jwt)
+      current_user = User.find_by(id: id['user_id']) 
+      end
     end
   
     # #given some payload, I want to  return a token

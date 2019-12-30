@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
   match '*all', to: proc { [204, {}, ['']]}, via: :options
-  get 'welcome_page/welcome'
+  # get 'welcome_page/welcome'
   post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
-  get 'location/create'
+  # get 'location/create'
   resources :locations
   resources :favorites
   resources :reviews 
   resources :ratings
   resources :trucks
   resources :orders
-  resources :customers
-  resources :owners
+  # resources :customers
+  # resources :owners
   resources :menus
   resources :categories
   resources :items
-  resource :users
+  resources :users
 
   # resource :updates
   resources :direct_uploads
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get '/updates', to: 'updates#index'
   post '/updates', to: 'updates#create'
   post '/payments', to: 'payments#create'
-  get '/current_user', to: 'current_user#show'
+  # get '/users', to: 'users#show'
   # , controllers: { sessions: 'sessions' }
   # _sign_in_path_for :user, to: "users#show"
   # root to: 'users#index'

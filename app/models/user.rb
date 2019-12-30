@@ -19,13 +19,18 @@ class User < ApplicationRecord
 
 
 
- def self.valid_login?(email, password)
-       user = where(email: email).first
-       [user&.valid_password?(password), user]
-     end
+  def self.valid_login?(email, password)
+    user = where(email: email).first
+    [user&.valid_password?(password), user]
+  end
      
 
-
+  # def jwt_payload
+  #   { 'User' => @user.id}
+  # end
+  # def on_jwt_dispatch(token, payload)
+  #   do_something(token, payload)
+  # end
 
 
 

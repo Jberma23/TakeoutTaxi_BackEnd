@@ -1,32 +1,19 @@
+require 'byebug'
 class UsersController < ApplicationController
-    # before_action :authenticate_user!
+    before_action :authenticate
     def index 
-        users = User.all
-        render json: users
-        jwt = request.headers[:token]
-        if jwt
-        id = decode(jwt)
-        current_user = User.find_by(id: id['user_id']) 
         if current_user != nil   
             render json:  current_user.to_json( 
                 include: [:ratings, :orders, :reviews, :favorites ])
-            end
+            
         else 
             render json:  User.all.to_json( 
                 include: [:ratings, :orders, :reviews, :favorites ])
         end
     end
-    def is_signed_in?
-
-        if user_signed_in?
-          render :json => {"signed_in" => true, "user" => current_user}.to_json()
-        else
-          render :json => {"signed_in" => false}.to_json()
-        end
-     
-    
-    end
+   
     def show 
+  
         jwt = request.headers[:token]
         if jwt
         id = decode(jwt)

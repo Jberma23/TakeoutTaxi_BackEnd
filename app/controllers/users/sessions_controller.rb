@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Users::SessionsController < Devise::SessionsController
   
-  before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: [:new, :create]
 
   # GET /resource/sign_in
   def new
@@ -14,7 +14,10 @@ class Users::SessionsController < Devise::SessionsController
       id = decode(request[:user]["token"])
       @user = User.find_by(id: id['user_id'])
     else 
-    self.resource = warden.authenticate!(auth_options)
+      if User.valid_login?(request[:user]["email"], request[:user]["password"])[0]
+        @user = User.valid_login?(request[:user]["email"], request[:user]["password"])[1]
+      end
+      
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
     yield resource if block_given?

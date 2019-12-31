@@ -25,12 +25,6 @@ class User < ApplicationRecord
   end
      
 
-  # def jwt_payload
-  #   { 'User' => @user.id}
-  # end
-  # def on_jwt_dispatch(token, payload)
-  #   do_something(token, payload)
-  # end
 
 
 

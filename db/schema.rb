@@ -106,12 +106,12 @@ ActiveRecord::Schema.define(version: 2019_12_03_182328) do
     t.string "url"
     t.integer "review_count"
     t.integer "rating"
+    t.string "latitude"
+    t.string "longitude"
     t.string "price"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "longitude"
-    t.string "latitude"
   end
 
   create_table "updates", force: :cascade do |t|

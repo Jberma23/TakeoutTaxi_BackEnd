@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 require 'faker'
 require 'geocoder'
-require 'byebug'
+
 # Truck.connection.execute('ALTER SEQUENCE trucks_id_seq RESTART WITH 1')
 # User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 # Review.connection.execute('ALTER SEQUENCE reviews_id_seq RESTART WITH 1')

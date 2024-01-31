@@ -75,55 +75,68 @@ STATES = ["WestVirginia", "Minnesota", "Tennessee", "Maryland", "Connecticut", "
 
 
 
-######################two####################################
-num = 0
-50.times do 
-    state = STATES.sample
-    url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-    response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
-    # ENV["YELP_API_KEY"]
-    # Rails.application.credentials[:yelp][:api_key]
-    json2 = JSON.parse(response2)
-    if state == "Washingtondc" 
-(0...json2["businesses"].length).each do |number|
-truck = Truck.create(
-name: json2["businesses"][number]["name"],
-owner_id: User.all.sample.id, 
-image_url: json2["businesses"][number]["image_url"], 
-url: json2["businesses"][number]["url"], 
-review_count: json2["businesses"][number]["review_count"],
-rating: json2["businesses"][number]["rating"],
-latitude: json2["businesses"][number]["coordinates"]["latitude"],
-longitude: json2["businesses"][number]["coordinates"]["longitude"], 
-price: json2["businesses"][number]["price"],
-address: json2["businesses"][number]["location"]["display_address"])
-end
-else 
-url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
-response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"}) 
-# ENV["YELP_API_KEY"]
-# Rails.application.credentials[:yelp][:api_key]
-json2 = JSON.parse(response2)
-(0...json2["businesses"].length).each do |number|
-Truck.create(
-name: json2["businesses"][number]["name"],
-owner_id: User.all.sample.id, 
-image_url: json2["businesses"][number]["image_url"], 
-url: json2["businesses"][number]["url"], 
-review_count: json2["businesses"][number]["review_count"],
-rating: json2["businesses"][number]["rating"],
-latitude: json2["businesses"][number]["coordinates"]["latitude"],
-longitude: json2["businesses"][number]["coordinates"]["longitude"], 
-price: json2["businesses"][number]["price"],
-address: json2["businesses"][number]["location"]["display_address"])
+# ######################two####################################
+# num = 0
+# 50.times do 
+#     state = STATES.sample
+#     url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
+#     response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"})
+#     # ENV["YELP_API_KEY"]
+#     # Rails.application.credentials[:yelp][:api_key]
+#     json2 = JSON.parse(response2)
+#     if state == "Washingtondc" 
+# (0...json2["businesses"].length).each do |number|
+# truck = Truck.create(
+# name: json2["businesses"][number]["name"],
+# owner_id: User.all.sample.id, 
+# image_url: json2["businesses"][number]["image_url"], 
+# url: json2["businesses"][number]["url"], 
+# review_count: json2["businesses"][number]["review_count"],
+# rating: json2["businesses"][number]["rating"],
+# latitude: json2["businesses"][number]["coordinates"]["latitude"],
+# longitude: json2["businesses"][number]["coordinates"]["longitude"], 
+# price: json2["businesses"][number]["price"],
+# address: json2["businesses"][number]["location"]["display_address"])
+# end
+# else 
+# url2 = "https://api.yelp.com/v3/businesses/search?term=FoodTrucks&location=#{state}&limit=50"
+# response2 = RestClient.get(url2, headers={Authorization: "Bearer #{Rails.application.credentials[:yelp][:api_key]}"}) 
+# # ENV["YELP_API_KEY"]
+# # Rails.application.credentials[:yelp][:api_key]
+# json2 = JSON.parse(response2)
+# (0...json2["businesses"].length).each do |number|
+# Truck.create(
+# name: json2["businesses"][number]["name"],
+# owner_id: User.all.sample.id, 
+# image_url: json2["businesses"][number]["image_url"], 
+# url: json2["businesses"][number]["url"], 
+# review_count: json2["businesses"][number]["review_count"],
+# rating: json2["businesses"][number]["rating"],
+# latitude: json2["businesses"][number]["coordinates"]["latitude"],
+# longitude: json2["businesses"][number]["coordinates"]["longitude"], 
+# price: json2["businesses"][number]["price"],
+# address: json2["businesses"][number]["location"]["display_address"])
 
 
-end
-end
-end
+# end
+# end
+# end
 
 
-
+30.times do 
+    Truck.create(
+    name: Faker::Company.name,
+    owner_id: User.all.sample.id, 
+    image_url: Faker::Company.logo, 
+    url: Faker::Internet.url, 
+    review_count: Faker::Number.between(from: 1, to: 100),
+    rating: Faker::Number.between(from: 1, to: 5),
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude, 
+    price: ["$", "$$", "$$$", "$$$$", "$$$$$"].sample,
+    address: Faker::Address.full_address
+    )
+    end
 
 
 

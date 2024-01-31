@@ -10,7 +10,9 @@ gem 'geocoder'
 # gem 'devise-jwt'
 # gem 'fast_jsonapi'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 1.5', '>= 1.5.4'
+gem 'sprockets', '~> 4.2', '>= 4.2.1'
+gem 'sprockets-rails', '~> 3.4', '>= 3.4.2'
 # Use Puma as the app server
 gem 'puma'
 gem 'devise_token_auth'

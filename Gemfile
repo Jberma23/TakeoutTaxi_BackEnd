@@ -4,9 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.2"
 gem 'dotenv-rails', groups: [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
-gem 'active_model_serializers'
-gem 'geocoder'
+gem 'rails', '~> 7.1', '>= 7.1.3'
+gem 'active_model_serializers', '~> 0.10.14'
+gem 'geocoder', '~> 1.8', '>= 1.8.2'
 # gem 'devise-jwt'
 # gem 'fast_jsonapi'
 # Use postgresql as the database for Active Record
@@ -15,7 +15,7 @@ gem 'sprockets', '~> 4.2', '>= 4.2.1'
 gem 'sprockets-rails', '~> 3.4', '>= 3.4.2'
 # Use Puma as the app server
 gem 'puma'
-gem 'devise_token_auth'
+gem 'devise_token_auth', '>= 1.2.0', git: "https://github.com/lynndylanhurley/devise_token_auth"
 gem 'knock'
 gem 'square.rb'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
